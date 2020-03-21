@@ -1,0 +1,157 @@
+<ur-loader *ngIf="isLoading"></ur-loader>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group" *ngIf="tryb === 'rejestracja'">
+        <label for="imie">Imię: </label>
+        <input type="imie"
+               id="imie"
+               placeholder="Janusz"
+               class="form-control"
+               name="imie"
+               ngModel
+               required
+               imie
+               #imie="ngModel">
+        <span class="help-block" *ngIf="!imie.valid && imie.touched" style="color:red; font-size: 10px">Imie jest wymagane!</span>
+      </div>
+      <div class="form-group" *ngIf="tryb === 'rejestracja'">
+        <label for="nazwisko">Nazwisko: </label>
+        <input type="nazwisko"
+               id="nazwisko"
+               placeholder="Kowalski"
+               class="form-control"
+               name="nazwisko"
+               ngModel
+               #nazwisko="ngModel"
+               required>
+        <span class="help-block" *ngIf="!nazwisko.valid && nazwisko.touched" style="color:red; font-size: 10px">Nazwisko jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="email"
+               id="email"
+               class="form-control"
+               name="email"
+               placeholder="email@test.com"
+               ngModel
+               required
+               email
+               #email="ngModel">
+        <span class="help-block" *ngIf="!email.valid && email.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło: </label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               name="password"
+               ngModel
+               #password="ngModel"
+               minlength="6"
+               required>
+      </div>
+      <span class="help-block" *ngIf="!password.valid && password.touched"
+            style="color:red">Wprowadź poprawne hasło</span>
+      <div class="form-group" *ngIf="tryb === 'rejestracja'">
+        <label for="ulica">Ulica: </label>
+        <input type="ulica"
+               id="ulica"
+               placeholder="Królewska 1"
+               class="form-control"
+               name="ulica"
+               ngModel
+               #ulica="ngModel"
+               required>
+        <span class="help-block" *ngIf="!ulica.valid && ulica.touched" style="color:red; font-size: 10px">Ulica jest wymagana!</span>
+      </div>
+      <div class="col-md-6 form-group" *ngIf="tryb === 'rejestracja'">
+        <label for="miasto">Miasto: </label>
+        <input type="miasto"
+               id="miasto"
+               placeholder="Kraków"
+               class="form-control"
+               name="miasto"
+               ngModel
+               #miasto="ngModel"
+               required
+        >
+        <span class="help-block" *ngIf="!miasto.valid && miasto.touched" style="color:red; font-size: 10px">Miasto jest wymagane!</span>
+      </div>
+      <div class="col-xs-8 col-md-4 form-group col-md-offset-2" *ngIf="tryb === 'rejestracja'">
+        <label for="kodPocztowy">Kod pocztowy: </label>
+        <input type="kodPocztowy"
+               id="kodPocztowy"
+               placeholder="11-111"
+               class="form-control"
+               name="kodPocztowy"
+               ngModel
+               #kodPocztowy="ngModel"
+               required
+               [ngClass]="{ 'is-invalid':!kodPocztowyV(kodPocztowy.value)}"
+        >
+        <span class="help-block"
+              *ngIf="(!kodPocztowy.valid  || !kodPocztowyV(kodPocztowy.value)) && kodPocztowy.touched "
+              style="color:red; font-size: 10px">Kod pocztowy jest niepoprawny!</span>
+      </div>
+      <div *ngIf="tryb === 'rejestracja'">
+        <label for="firma" style="marginRight:8px">Firma</label>
+        <input type="checkbox" id="firma" name="firma" value="firma" (click)="onFirma()">
+      </div>
+      <div *ngIf="tryb === 'rejestracja' && !czyFirma">
+        <label for="pesel">PESEL: </label>
+        <input type="pesel"
+               id="pesel"
+               placeholder="97101109212"
+               class="form-control"
+               name="pesel"
+               ngModel
+               #pesel="ngModel"
+               [ngClass]="{ 'is-invalid':!peselV(pesel.value)}"
+               required>
+        <span class="help-block"
+              *ngIf="(!pesel.valid  || !peselV(pesel.value)) && pesel.touched "
+              style="color:red; font-size: 10px">Pesel jest niepoprawny!</span>
+      </div>
+      <div *ngIf="tryb === 'rejestracja' && czyFirma">
+        <label for="regon">REGON: </label>
+        <input type="regon"
+               id="regon"
+               placeholder="123456785"
+               class="form-control"
+               name="regon"
+               ngModel
+               #regon="ngModel"
+               [ngClass]="{ 'is-invalid':!regonV(regon.value)}"
+               required>
+        <span class="help-block"
+              *ngIf="(!regon.valid  || !regonV(regon.value)) && regon.touched "
+              style="color:red; font-size: 10px">REGON jest niepoprawny!</span>
+      </div>
+      <div *ngIf="tryb === 'rejestracja'">
+        <label for="nip">NIP: </label>
+        <input type="nip"
+               id="nip"
+               placeholder="1234563218"
+               class="form-control"
+               name="nip"
+               ngModel
+               #nip="ngModel"
+               required>
+        <span class="help-block"
+              *ngIf="(!nip.valid  || !nipV(nip.value)) && nip.touched "
+              style="color:red; font-size: 10px">NIP jest niepoprawny!</span>
+      </div>
+      <br>
+      <div>
+        <button class="btn btn-primary" type="submit" *ngIf="tryb === 'rejestracja'"
+                [disabled]="!f.valid || !zipcode || !pesel">Rejestracja
+        </button>
+        <button class="btn btn-primary" type="submit" *ngIf="tryb === 'logowanie'"
+                [disabled]="!f.valid">Logowanie
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
