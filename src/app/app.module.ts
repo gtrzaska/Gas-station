@@ -8,12 +8,14 @@ import { AuthComponent } from './auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CennikComponent } from './cennik/cennik.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AuthComponent
+    AuthComponent,
+    CennikComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

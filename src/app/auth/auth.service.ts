@@ -28,6 +28,7 @@ export class AuthService {
       return;
     }
     this.user.next(new User(userData.email, userData.uprawnienia));
+    console.log('as ' + this.user.value.uprawnienia);
   }
 
   logout() {

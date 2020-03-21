@@ -8,8 +8,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAuth = false;
-  private email: string;
-  private uprawnienia: string;
+  public email: string;
+  public uprawnienia: string;
   constructor(private authService: AuthService) {
   }
 

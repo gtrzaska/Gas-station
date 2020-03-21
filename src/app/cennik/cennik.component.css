@@ -1,0 +1,8 @@
+input {
+  width: 50%;
+  display: inline-block;
+}
+label {
+  width: 30%;
+  display: inline-block;
+}
