@@ -1,0 +1,56 @@
+
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form (ngSubmit)="onSubmit(f)" #f = "ngForm">
+      <div class="form-group" >
+        <label>Benzyna E95: </label>
+        <input type="number"
+               id="e95"
+               class="form-control"
+               name = "e95"
+               [ngModel]="cenaE95"
+               ngModel
+               step="0.01"
+               required
+               >
+      </div>
+      <div class="form-group">
+        <label for="e98">Benzyna E98: </label>
+        <input type="number"
+               id="e98"
+               class="form-control"
+               name = "e98"
+               [ngModel]="cenaE98"
+               ngModel
+               step="0.01"
+               required>
+      </div>
+      <div class="form-group">
+        <label for="on">Olej napędowy: </label>
+        <input type="number"
+               id="on"
+               class="form-control"
+               name = "on"
+               ngModel
+               [ngModel]="cenaON"
+               step="0.01"
+               required>
+      </div>
+      <div class="form-group">
+        <label for="lpg">Lepszy Power Gamoniu </label>
+        <input type="number"
+               id="lpg"
+               [ngModel]="cenaLPG"
+               class="form-control"
+               name = "lpg"
+               ngModel
+               step="0.01"
+               required>
+      </div>
+      <div *ngIf="this.uprawnienia === 'pracownik' || this.uprawnienia === 'wlasciciel'">
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">{{'Zamień ceny'}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
