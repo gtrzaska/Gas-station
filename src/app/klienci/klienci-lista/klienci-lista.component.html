@@ -1,0 +1,12 @@
+<!--<div class="row">
+  <div class="col-xs-12">
+    <button class=" btn btn-success" [routerLink]="['']">New</button>
+  </div>
+</div>-->
+<div class="row">
+  <div class="col-xs-12">
+
+    <app-klient *ngFor="let user of klienciService.users, let i = index" [user]="user" [id]="i"  ></app-klient>
+
+  </div>
+</div>

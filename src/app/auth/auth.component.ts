@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthComponent implements OnInit {
   tryb = 'logowanie';
+  poprawneDane = true;
   isLoading = false;
   zipPattern = /^\d{2}-\d{3}$/;
   peselPattern = /^\d{11}$/;
@@ -38,14 +39,13 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(authForm: NgForm) {
-    console.log(authForm.value);
+    // console.log(authForm.value);
    // localStorage.setItem('user', authForm.value.email);
-    this.isLoading = true;
-    setTimeout(() => {
-      this.authService.login(authForm.value.email, authForm.value.password);
-      this.isLoading = false;
-      this.router.navigate(['']);
-    }, 1500);
+ //   this.isLoading = true;
+    this.poprawneDane = this.authService.login(authForm.value.email, authForm.value.password);
+//      this.isLoading = false;
+   // this.router.navigate(['']);
+
 
   }
 

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { CennikComponent } from './cennik/cennik.component';
+import { KlienciComponent } from './klienci/klienci.component';
+import { KlientDaneComponent } from './klienci/klient-dane/klient-dane.component';
 
 const appRoutes: Routes = [
   {
@@ -9,7 +11,12 @@ const appRoutes: Routes = [
       {path: ':tryb', component: AuthComponent},
     ]
   },
-  {path: 'cennik', component: CennikComponent}
+  {path: 'cennik', component: CennikComponent},
+  {path: 'klienci', component: KlienciComponent,
+    children: [
+      {path: ':id', component: KlientDaneComponent},
+    ]
+  },
 ];
 
 @NgModule({
