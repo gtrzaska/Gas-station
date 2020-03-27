@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { AuthService } from './auth.service';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {AuthService} from './auth.service';
+import {first} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
+
 export class AuthComponent implements OnInit {
   tryb = 'logowanie';
   poprawneDane = true;
-  isLoading = false;
+  public isLoading = false;
   zipPattern = /^\d{2}-\d{3}$/;
   peselPattern = /^\d{11}$/;
   nipPattern = /^\d{10}$/;
@@ -39,12 +41,18 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(authForm: NgForm) {
-    // console.log(authForm.value);
-   // localStorage.setItem('user', authForm.value.email);
- //   this.isLoading = true;
-    this.poprawneDane = this.authService.login(authForm.value.email, authForm.value.password);
-//      this.isLoading = false;
-   // this.router.navigate(['']);
+    this.authService.user.subscribe(user => {
+      console.log(user);
+      this.isLoading = !this.isLoading;
+    });
+    if (this.tryb === 'logowanie') {
+
+      this.authService.login(authForm.value.email, authForm.value.password);
+    } else if (this.tryb === 'rejestracja') {
+      this.authService.signup(authForm.value.imie, authForm.value.nazwisko, authForm.value.email,
+        authForm.value.password, authForm.value.ulica, authForm.value.miasto,
+        authForm.value.kodPocztowy, authForm.value.pesel, authForm.value.regon, authForm.value.nip)
+    }
 
 
   }

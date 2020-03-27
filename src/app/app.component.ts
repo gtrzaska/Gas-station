@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth/auth.service';
+import {AuthService} from './auth/auth.service';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,27 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private authService: AuthService) {
+  data = [];
+
+  constructor(private authService: AuthService, private http: HttpClient) {
+    this.http.get('https://cors-anywhere.herokuapp.com/gtrzaska.cba.pl/auth.php').subscribe(data => {
+      this.data.push(data);
+      console.log(this.data);
+
+
+    }, error => console.error(error));
+
+    /*   this.http.get('http://localhost:7777/pzesp/auth.php').subscribe(data => {
+          this.data.push(data);
+          console.log(this.data);
+
+
+        }, error => console.error(error));*/
   }
+
 
   ngOnInit() {
     this.authService.autoLogin();
+
   }
 }

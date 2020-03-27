@@ -10,6 +10,7 @@
                class="form-control"
                name="imie"
                ngModel
+               maxlength='32'
                required
                imie
                #imie="ngModel">
@@ -23,6 +24,7 @@
                class="form-control"
                name="nazwisko"
                ngModel
+               maxlength='32'
                #nazwisko="ngModel"
                required>
         <span class="help-block" *ngIf="!nazwisko.valid && nazwisko.touched" style="color:red; font-size: 10px">Nazwisko jest wymagane!</span>
@@ -35,6 +37,7 @@
                name="email"
                placeholder="email@test.com"
                ngModel
+               maxlength='42'
                required
                email
                #email="ngModel">
@@ -48,7 +51,8 @@
                name="password"
                ngModel
                #password="ngModel"
-               minlength="6"
+               minlength="4"
+               maxlength='32'
                required>
       </div>
       <span class="help-block" *ngIf="!password.valid && password.touched"
@@ -57,6 +61,7 @@
         <label for="ulica">Ulica: </label>
         <input type="ulica"
                id="ulica"
+               maxlength='32'
                placeholder="Królewska 1"
                class="form-control"
                name="ulica"
@@ -65,11 +70,12 @@
                required>
         <span class="help-block" *ngIf="!ulica.valid && ulica.touched" style="color:red; font-size: 10px">Ulica jest wymagana!</span>
       </div>
-      <div class="col-md-6 form-group" *ngIf="tryb === 'rejestracja'">
+      <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="miasto">Miasto: </label>
         <input type="miasto"
                id="miasto"
                placeholder="Kraków"
+               maxlength='32'
                class="form-control"
                name="miasto"
                ngModel
@@ -78,7 +84,7 @@
         >
         <span class="help-block" *ngIf="!miasto.valid && miasto.touched" style="color:red; font-size: 10px">Miasto jest wymagane!</span>
       </div>
-      <div class="col-xs-8 col-md-4 form-group col-md-offset-2" *ngIf="tryb === 'rejestracja'">
+      <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="kodPocztowy">Kod pocztowy: </label>
         <input type="kodPocztowy"
                id="kodPocztowy"
