@@ -1,12 +1,13 @@
-<!--<div class="row">
+<ur-loader *ngIf="klienciService.isLoading"></ur-loader>
+<div class="row">
   <div class="col-xs-12">
-    <button class=" btn btn-success" [routerLink]="['']">New</button>
+    <button href="#" (click)="odswierzListe()" class=" btn btn-success">Refresz</button>
   </div>
-</div>-->
+</div>
 <div class="row">
   <div class="col-xs-12">
 
-    <app-klient *ngFor="let user of klienciService.users, let i = index" [user]="user" [id]="i"  ></app-klient>
+    <app-klient *ngFor="let user of klienciService.users, let i = index" [user]="user" [id]="i"></app-klient>
 
   </div>
 </div>
