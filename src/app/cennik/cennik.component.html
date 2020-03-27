@@ -47,7 +47,7 @@
                step="0.01"
                required>
       </div>
-      <div *ngIf="this.uprawnienia === 'pracownik' || this.uprawnienia === 'wlasciciel'">
+      <div *ngIf="this.uprawnienia === 'pracownik' || this.uprawnienia === '1'">
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid">{{'Zamień ceny'}}</button>
       </div>
     </form>
