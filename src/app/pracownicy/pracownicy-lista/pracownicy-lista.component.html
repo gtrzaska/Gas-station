@@ -1,0 +1,15 @@
+<ur-loader *ngIf="pracownicyService.isLoading"></ur-loader>
+<div class="row">
+  <div class="col-xs-12">
+    <button href="#" (click)="odswierzListe()" class=" btn btn-success">Refresz</button>
+    <button [routerLink]="'auth/rejestracja2'" class=" btn btn-success">Nowy</button>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+
+    <app-pracownik *ngFor="let user of pracownicyService.users, let i = index" [user]="user" [id]="i"></app-pracownik>
+
+  </div>
+</div>

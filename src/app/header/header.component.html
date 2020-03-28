@@ -11,6 +11,9 @@
         <li routerLinkActive="active" *ngIf=" this.uprawnienia > 0 ">
           <a [routerLink]="['klienci']">Użytkownicy</a>
         </li>
+        <li routerLinkActive="active" *ngIf=" this.uprawnienia === 1 ">
+          <a [routerLink]="['pracownicy']">Pracownicy</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li routerLinkActive="active" *ngIf="!isAuth">
