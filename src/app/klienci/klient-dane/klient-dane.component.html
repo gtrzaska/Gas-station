@@ -1,7 +1,8 @@
+<ur-loader *ngIf="klienciService.isLoading"></ur-loader>
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <div class="form-group" >
+      <div class="form-group">
         <label for="imie">Imię: </label>
         <input type="imie"
                id="imie"
@@ -31,6 +32,7 @@
         <label for="email">Email: </label>
         <input type="email"
                id="email"
+               disabled
                class="form-control"
                name="email"
                [ngModel]="user[3]"
@@ -81,9 +83,9 @@
               *ngIf="(!kodPocztowy.valid  || !kodPocztowyV(kodPocztowy.value)) && kodPocztowy.touched "
               style="color:red; font-size: 10px">Kod pocztowy jest niepoprawny!</span>
       </div>
-<!--      <div>
+      <div>
         <label for="firma" style="marginRight:8px">Firma</label>
-        <input type="checkbox" id="firma" name="firma" value="firma" (click)="onFirma()">
+        <input type="checkbox" [checked]="czyFirma" id="firma" name="firma" value="firma" (click)="onFirma()">
       </div>
       <div *ngIf="!czyFirma">
         <label for="pesel">PESEL: </label>
@@ -91,6 +93,7 @@
                id="pesel"
                class="form-control"
                name="pesel"
+               [ngModel]="user[7]"
                ngModel
                #pesel="ngModel"
                [ngClass]="{ 'is-invalid':!peselV(pesel.value)}"
@@ -103,6 +106,7 @@
         <label for="regon">REGON: </label>
         <input type="regon"
                id="regon"
+               [ngModel]="user[8]"
                class="form-control"
                name="regon"
                ngModel
@@ -117,6 +121,7 @@
         <label for="nip">NIP: </label>
         <input type="nip"
                id="nip"
+               [ngModel]="user[9]"
                class="form-control"
                name="nip"
                ngModel
@@ -125,8 +130,14 @@
         <span class="help-block"
               *ngIf="(!nip.valid  || !nipV(nip.value)) && nip.touched "
               style="color:red; font-size: 10px">NIP jest niepoprawny!</span>
-      </div>-->
-
+      </div>
+      <div>
+        <button class="btn btn-primary"
+                [disabled]="!f.valid || !zipcode || !pesel" (click)="edytuj(f)">Edytuj
+        </button>
+        <button class="btn btn-danger" (click)="usun()">Usuń
+        </button>
+      </div>
     </form>
   </div>
 </div>
