@@ -6,10 +6,10 @@
         <label for="imie">Imię: </label>
         <input type="text"
                id="imie"
-               value="user[1]"
-               [ngModel]="user[1]"
                class="form-control"
                name="imie"
+               placeholder="Marian"
+               maxlength="32"
                ngModel
                required
                imie
@@ -20,7 +20,8 @@
         <label for="nazwisko">Nazwisko: </label>
         <input type="text"
                id="nazwisko"
-               [ngModel]="user[2]"
+               placeholder="Pażdzioch"
+               maxlength="32"
                class="form-control"
                name="nazwisko"
                ngModel
@@ -30,42 +31,54 @@
       </div>
       <div class="form-group">
         <label for="email">Email: </label>
-        <input type="text"
+        <input type="email"
+               placeholder="mail@mail.com"
                id="email"
-               disabled
                class="form-control"
                name="email"
-               [ngModel]="user[3]"
                ngModel
+               maxlength="32"
                required
                email
                #email="ngModel">
         <span class="help-block" *ngIf="!email.valid && email.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
       </div>
       <div class="form-group">
+        <label for="haslo">Hasło: </label>
+        <input type="password"
+               id="haslo"
+               class="form-control"
+               name="haslo"
+               maxlength="32"
+               ngModel
+               required
+               haslo
+               #haslo="ngModel">
+        <span class="help-block" *ngIf="!haslo.valid && haslo.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
+      </div>
+      <div class="form-group">
         <label for="stanowisko">Stanowisko : </label>
         <select class="custom-select form-control mr-sm-2"
                 id="stanowisko"
                 name="stanowisko"
+                maxlength="32"
                 ngModel
                 required
+                stanowisko
                 #stanowisko="ngModel">
-          <option value="1" [disabled]="user[5] != '1'" [selected]="user[5] == '1'">Właściciel</option>
-          <option value="2" [selected]="user[5] == '2'">Kasjer</option>
-          <option value="3" [selected]="user[5] == '3'">Ochroniarz</option>
-          <option value="4" [selected]="user[5] == '4'">Obsługa myjni</option>
-          <option value="5" [selected]="user[5] == '5'">Obsługa dystrybutora</option>
+          <option value="2" selected>Kasjer</option>
+          <option value="3">Ochroniarz</option>
+          <option value="4">Obsługa myjni</option>
+          <option value="5">Obsługa dystrybutora</option>
         </select>
 
         <span class="help-block" *ngIf="!stanowisko.valid && stanowisko.touched" style="color:red; font-size: 10px">Stanowisko jest wymagane!</span>
-      </div>
-      <div>
-        <button class="btn btn-primary" (click)="edytuj(f)"
-                [disabled]="!f.valid ">Edytuj
-        </button>
-        <button class="btn btn-danger" (click)="usun()">Usuń
-        </button>
 
+        <div>
+          <button class="btn btn-primary" [disabled]="!f.valid ">Dodaj
+          </button>
+
+        </div>
       </div>
     </form>
   </div>

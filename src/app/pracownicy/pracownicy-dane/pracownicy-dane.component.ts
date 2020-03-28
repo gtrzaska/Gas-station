@@ -17,7 +17,7 @@ export class PracownicyDaneComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public pracownicyService: PracownicyService,
-              private router: Router) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -26,7 +26,6 @@ export class PracownicyDaneComponent implements OnInit {
         this.id = params.id;
         this.user = this.pracownicyService.users[this.id];
         console.log(this.user);
-        console.log(this.peselPom + " -  - " + this.regonPom);
       }
     );
 
@@ -37,11 +36,11 @@ export class PracownicyDaneComponent implements OnInit {
   }
 
   usun() {
-    // this.klienciService.usunKlienta(this.user[3]);
+    this.pracownicyService.usunPracownika(this.user[3]);
   }
 
   edytuj(form: NgForm) {
-    // this.klienciService.edytujKlienta(this.user[3], form.value.imie, form.value.nazwisko, form.value.ulica, form.value.miasto, form.value.kodPocztowy, form.value.pesel, form.value.regon, form.value.nip);
+    this.pracownicyService.edytujPracownika(this.user[3], form.value.imie, form.value.nazwisko, form.value.stanowisko);
   }
 
 }

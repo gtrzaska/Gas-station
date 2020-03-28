@@ -66,25 +66,7 @@ export class AuthService {
           this.isLoading = false;
         }
       }, error => console.error(error));
-
-
   }
-
-
-  /*    // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < this.users.length; i++) {
-        if (this.users[i][0] === email) {
-          if (this.users[i][1] === password) {
-            this.handleUser(email, this.users[i][2]);
-            this.router.navigate(['']);
-            poprawneDane = true;
-          }
-        }
-      }
-      if (!poprawneDane) {
-        return false;
-      }*/
-
 
   autoLogin() {
     const userData: {
