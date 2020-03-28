@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="imie">Imię: </label>
-        <input type="imie"
+        <input type="text"
                id="imie"
                placeholder="Janusz"
                class="form-control"
@@ -18,7 +18,7 @@
       </div>
       <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="nazwisko">Nazwisko: </label>
-        <input type="nazwisko"
+        <input type="text"
                id="nazwisko"
                placeholder="Kowalski"
                class="form-control"
@@ -31,7 +31,7 @@
       </div>
       <div class="form-group">
         <label for="email">Email: </label>
-        <input type="email"
+        <input type="text"
                id="email"
                class="form-control"
                name="email"
@@ -59,7 +59,7 @@
             style="color:red">Wprowadź poprawne hasło</span>
       <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="ulica">Ulica: </label>
-        <input type="ulica"
+        <input type="text"
                id="ulica"
                maxlength='32'
                placeholder="Królewska 1"
@@ -72,7 +72,7 @@
       </div>
       <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="miasto">Miasto: </label>
-        <input type="miasto"
+        <input type="text"
                id="miasto"
                placeholder="Kraków"
                maxlength='32'
@@ -86,7 +86,7 @@
       </div>
       <div class="form-group" *ngIf="tryb === 'rejestracja'">
         <label for="kodPocztowy">Kod pocztowy: </label>
-        <input type="kodPocztowy"
+        <input type="text"
                id="kodPocztowy"
                placeholder="11-111"
                class="form-control"
@@ -106,7 +106,7 @@
       </div>
       <div *ngIf="tryb === 'rejestracja' && !czyFirma">
         <label for="pesel">PESEL: </label>
-        <input type="pesel"
+        <input type="text"
                id="pesel"
                placeholder="97101109212"
                class="form-control"
@@ -121,7 +121,7 @@
       </div>
       <div *ngIf="tryb === 'rejestracja' && czyFirma">
         <label for="regon">REGON: </label>
-        <input type="regon"
+        <input type="text"
                id="regon"
                placeholder="123456785"
                class="form-control"
@@ -136,7 +136,7 @@
       </div>
       <div *ngIf="tryb === 'rejestracja'">
         <label for="nip">NIP: </label>
-        <input type="nip"
+        <input type="text"
                id="nip"
                placeholder="1234563218"
                class="form-control"

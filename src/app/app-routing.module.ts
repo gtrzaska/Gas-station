@@ -6,6 +6,7 @@ import {KlienciComponent} from './klienci/klienci.component';
 import {KlientDaneComponent} from './klienci/klient-dane/klient-dane.component';
 import {PracownicyComponent} from "./pracownicy/pracownicy.component";
 import {PracownicyDaneComponent} from "./pracownicy/pracownicy-dane/pracownicy-dane.component";
+import {PracownikNowyComponent} from "./pracownicy/pracownik-nowy/pracownik-nowy.component";
 
 const appRoutes: Routes = [
   {
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   {
     path: 'pracownicy', component: PracownicyComponent,
     children: [
+      {path: 'dodaj-pracownika', component: PracownikNowyComponent},
       {path: ':id', component: PracownicyDaneComponent},
       //    {path: 'auth/:tryb', component: AuthComponent},
     ]
