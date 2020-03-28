@@ -9,7 +9,7 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit {
   isAuth = false;
   public email: string;
-  public uprawnienia: string;
+  public uprawnienia: number;
   constructor(private authService: AuthService) {
   }
 
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
       this.isAuth = !user ? false : true;
       if (this.isAuth) {
         this.email = user.email;
-        this.uprawnienia = user.uprawnienia;
+        this.uprawnienia = +user.uprawnienia;
       }
     });
   }

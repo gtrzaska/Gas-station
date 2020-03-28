@@ -28,11 +28,12 @@ export class AuthComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService
+              public authService: AuthService
   ) {
   }
 
   ngOnInit() {
+
     this.route.params.subscribe(
       (params: Params) => {
         this.tryb = params.tryb;
@@ -46,9 +47,10 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(authForm: NgForm) {
+    this.isLoading = true;
     this.authService.user.subscribe(user => {
       console.log(user);
-      this.isLoading = !this.isLoading;
+      this.isLoading = false;
     });
     if (this.tryb === 'logowanie') {
 

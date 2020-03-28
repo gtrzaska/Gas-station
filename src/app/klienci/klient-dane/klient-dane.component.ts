@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { KlienciService } from '../klienci.service';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {KlienciService} from '../klienci.service';
 
 @Component({
   selector: 'app-klient-dane',
@@ -20,8 +20,11 @@ export class KlientDaneComponent implements OnInit {
   regon = false;
   id: number;
   user;
+  peselPom: string;
+  regonPom: string;
+
   constructor(private route: ActivatedRoute,
-              private klienciService: KlienciService,
+              public klienciService: KlienciService,
               private router: Router) {
   }
 
@@ -31,38 +34,61 @@ export class KlientDaneComponent implements OnInit {
         this.id = params.id;
         this.user = this.klienciService.users[this.id];
         console.log(this.user);
+        this.peselPom = this.user[7];
+        this.regonPom = this.user[8];
+        console.log(this.peselPom + " -  - " + this.regonPom);
+        if (this.user[7] === '') {
+          this.czyFirma = true;
+        } else {
+          this.czyFirma = false;
+        }
       }
     );
 
   }
 
-onSubmit(authForm: NgForm) {
+  onSubmit(authForm: NgForm) {
     console.log(authForm.value);
   }
 
-kodPocztowyV(kod: string) {
+  usun() {
+    this.klienciService.usunKlienta(this.user[3]);
+  }
+
+  edytuj(form: NgForm) {
+    this.klienciService.edytujKlienta(this.user[3], form.value.imie, form.value.nazwisko, form.value.ulica, form.value.miasto, form.value.kodPocztowy, form.value.pesel, form.value.regon, form.value.nip);
+  }
+
+  kodPocztowyV(kod: string) {
     this.zipcode = this.zipPattern.test(kod);
     return this.zipcode;
   }
 
-peselV(pesel: string) {
+  peselV(pesel: string) {
     this.pesel = this.peselPattern.test(pesel);
     return this.pesel;
   }
 
-nipV(nip: string) {
+  nipV(nip: string) {
     this.nip = this.nipPattern.test(nip);
     return this.nip;
   }
 
-regonV(nip: string) {
+  regonV(nip: string) {
     this.regon = this.regonPattern.test(nip);
     return this.regon;
   }
 
-onFirma() {
+  onFirma() {
     this.czyFirma = !this.czyFirma;
     this.pesel = this.czyFirma;
     this.regon = !this.czyFirma;
+    if (this.czyFirma) {
+      this.user[7] = '';
+      this.user[8] = this.regonPom;
+    } else {
+      this.user[8] = '';
+      this.user[7] = this.peselPom;
+    }
   }
 }
