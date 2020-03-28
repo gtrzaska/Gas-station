@@ -13,6 +13,7 @@ import {first} from "rxjs/operators";
 
 export class AuthComponent implements OnInit {
   tryb = 'logowanie';
+  tryb2 = 'logowanie';
   poprawneDane = true;
   public isLoading = false;
   zipPattern = /^\d{2}-\d{3}$/;
@@ -35,6 +36,10 @@ export class AuthComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.tryb = params.tryb;
+        this.tryb2 = params.tryb;
+        if (this.tryb2 == 'rejestracja2') {
+          this.tryb = 'rejestracja'
+        }
       }
     );
     console.log(this.tryb);
@@ -51,7 +56,7 @@ export class AuthComponent implements OnInit {
     } else if (this.tryb === 'rejestracja') {
       this.authService.signup(authForm.value.imie, authForm.value.nazwisko, authForm.value.email,
         authForm.value.password, authForm.value.ulica, authForm.value.miasto,
-        authForm.value.kodPocztowy, authForm.value.pesel, authForm.value.regon, authForm.value.nip)
+        authForm.value.kodPocztowy, authForm.value.pesel, authForm.value.regon, authForm.value.nip, this.tryb2)
     }
 
 

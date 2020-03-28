@@ -7,11 +7,11 @@ export class KlienciService implements OnInit {
   data = [];
   users = [];
   isLoading = false;
-
+  link = 'http://gtrzaska.cba.pl/';
   constructor(private http: HttpClient) {
     //this.users = [];
     this.isLoading = true;
-    this.http.get('https://cors-anywhere.herokuapp.com/gtrzaska.cba.pl/auth.php').subscribe(data => {
+    this.http.get(this.link + 'auth.php').subscribe(data => {
       this.data.push(data);
       console.log(this.data);
       console.log("-3333---");
@@ -34,9 +34,11 @@ export class KlienciService implements OnInit {
   klienci() {
     this.isLoading = true;
     this.users = [];
+    this.data = [];
     if (this.isFetch) {
-      this.http.get('https://cors-anywhere.herokuapp.com/gtrzaska.cba.pl/auth.php').subscribe(data => {
+      this.http.get(this.link + 'auth.php').subscribe(data => {
         this.data.push(data);
+        console.log(this.data);
         for (let i = 0; i < this.data[0].length; i++) {
           this.users[i] = [];
           this.users[i] = [this.data[0][i].Uzytkownik_id, this.data[0][i].Imie, this.data[0][i].Nazwisko, this.data[0][i].Email, this.data[0][i].Ulica, this.data[0][i].Miasto, this.data[0][i].Kod_pocztowy];
