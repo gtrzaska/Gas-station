@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { CennikComponent } from './cennik/cennik.component';
-import { KlienciComponent } from './klienci/klienci.component';
-import { KlientDaneComponent } from './klienci/klient-dane/klient-dane.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthComponent} from './auth/auth.component';
+import {CennikComponent} from './cennik/cennik.component';
+import {KlienciComponent} from './klienci/klienci.component';
+import {KlientDaneComponent} from './klienci/klient-dane/klient-dane.component';
+import {PracownicyComponent} from "./pracownicy/pracownicy.component";
+import {PracownicyDaneComponent} from "./pracownicy/pracownicy-dane/pracownicy-dane.component";
 
 const appRoutes: Routes = [
   {
@@ -12,10 +14,18 @@ const appRoutes: Routes = [
     ]
   },
   {path: 'cennik', component: CennikComponent},
-  {path: 'klienci', component: KlienciComponent,
+  {
+    path: 'klienci', component: KlienciComponent,
     children: [
       {path: ':id', component: KlientDaneComponent},
       {path: 'auth/:tryb', component: AuthComponent},
+    ]
+  },
+  {
+    path: 'pracownicy', component: PracownicyComponent,
+    children: [
+      {path: ':id', component: PracownicyDaneComponent},
+      //    {path: 'auth/:tryb', component: AuthComponent},
     ]
   },
 ];
