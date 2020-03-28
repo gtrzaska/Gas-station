@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   {path: 'klienci', component: KlienciComponent,
     children: [
       {path: ':id', component: KlientDaneComponent},
+      {path: 'auth/:tryb', component: AuthComponent},
     ]
   },
 ];

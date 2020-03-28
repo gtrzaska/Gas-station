@@ -7,12 +7,19 @@ import { KlienciService } from '../klienci.service';
   styleUrls: ['./klienci-lista.component.css']
 })
 export class KlienciListaComponent implements OnInit {
-
+  public isLoading = false;
 
   constructor(public klienciService: KlienciService) {
+    // this.klienciService.klienci();
+    // this.isLoading = klienciService.isLoading.;
   }
 
   ngOnInit(): void {
+
   }
 
+  odswierzListe() {
+    this.klienciService.klienci();
+
+  }
 }

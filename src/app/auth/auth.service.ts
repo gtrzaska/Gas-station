@@ -10,7 +10,8 @@ import {AuthComponent} from "./auth.component";
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  link = 'https://cors-anywhere.herokuapp.com/gtrzaska.cba.pl/';
+  // link = 'https://cors-anywhere.herokuapp.com/gtrzaska.cba.pl/';
+  link = 'http://gtrzaska.cba.pl/';
   user = new BehaviorSubject<User>(null);
 
 
@@ -18,7 +19,7 @@ export class AuthService {
   }
 
   signup(imie: string, nazwisko: string, email: string, password: string, ulica: string,
-         miasto: string, kod: string, pesel: string, regon: string, nip: string) {
+         miasto: string, kod: string, pesel: string, regon: string, nip: string, tryb: string) {
 
     this.http.post<any>(this.link + 'register_u.php', {
       email, password, imie, nazwisko, ulica,
@@ -28,15 +29,20 @@ export class AuthService {
 
       }, error => {
         if (error.status == '200') {
-          this.handleUser(email, '0');
-          this.router.navigate(['']);
-        } else if (error.status == '409') {
-          this.user.next(null);
-          alert("Email zajęty!")
+          if (tryb === 'rejestracja') {
+            this.handleUser(email, '0');
+            this.router.navigate(['']);
+          } else if (tryb === 'rejestracja2') {
+            this.router.navigate(['./klienci']);
+          }
         } else {
           this.user.next(null);
-          alert("Coś nie tak")
+          alert("Email zajęty!")
         }
+        /*else {
+          this.user.next(null);
+          alert("Coś nie tak")
+        }*/
       });
   }
 
