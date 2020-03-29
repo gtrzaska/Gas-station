@@ -18,6 +18,7 @@ import {PracownicyListaComponent} from './pracownicy/pracownicy-lista/pracownicy
 import {PracownicyDaneComponent} from './pracownicy/pracownicy-dane/pracownicy-dane.component';
 import {PracownikComponent} from './pracownicy/pracownicy-lista/pracownik/pracownik.component';
 import {PracownikNowyComponent} from './pracownicy/pracownik-nowy/pracownik-nowy.component';
+import {ProfilComponent} from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {PracownikNowyComponent} from './pracownicy/pracownik-nowy/pracownik-nowy
     PracownicyListaComponent,
     PracownicyDaneComponent,
     PracownikComponent,
-    PracownikNowyComponent
+    PracownikNowyComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

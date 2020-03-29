@@ -71,10 +71,10 @@ export class PracownicyService implements OnInit {
       });
   }
 
-  edytujPracownika(email: string, imie: string, nazwisko: string, stanowisko: string) {
+  edytujPracownika(email: string, imie: string, nazwisko: string, stanowisko: string, haslo: string) {
     let onusun = 'edytujPracownika';
     this.http.post<any>(this.link + 'users.php', {
-      email, onusun, imie, nazwisko, stanowisko
+      email, onusun, imie, nazwisko, stanowisko, haslo
     })
       .subscribe(error => {
 

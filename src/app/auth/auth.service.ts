@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 import {NgForm} from "@angular/forms";
 import {map, tap} from "rxjs/operators";
 import {AuthComponent} from "./auth.component";
+import {KlienciService} from "../klienci/klienci.service";
 
 
 @Injectable({providedIn: 'root'})
@@ -15,7 +16,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   isLoading = false;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private klienciService: KlienciService) {
   }
 
   signup(imie: string, nazwisko: string, email: string, password: string, ulica: string,
@@ -35,6 +36,7 @@ export class AuthService {
             this.isLoading = false;
           } else if (tryb === 'rejestracja2') {
             this.router.navigate(['./klienci']);
+            this.klienciService.klienci();
             this.isLoading = false;
           }
         } else {
@@ -55,9 +57,13 @@ export class AuthService {
       .subscribe(data => {
 
         console.log(data[0]);
+        console.log(data[0].Uprawnienia);
         if (data[0]) {
-          //console.log(data[0].FK_Uprawnienie);
-          this.handleUser(data[0].Email, data[0].FK_Uprawnienie);
+          if (data[0].Uprawnienia === '0') {
+            this.handleUser(data[0].Email, data[0].Uprawnienia);
+          } else {
+            this.handleUser(data[0].Email, data[0].FK_Uprawnienie);
+          }
           this.isLoading = false;
           this.router.navigate(['']);
         } else {
