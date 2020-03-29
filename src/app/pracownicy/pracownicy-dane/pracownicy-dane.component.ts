@@ -40,7 +40,7 @@ export class PracownicyDaneComponent implements OnInit {
   }
 
   edytuj(form: NgForm) {
-    this.pracownicyService.edytujPracownika(this.user[3], form.value.imie, form.value.nazwisko, form.value.stanowisko);
+    this.pracownicyService.edytujPracownika(this.user[3], form.value.imie, form.value.nazwisko, form.value.stanowisko, this.user[4]);
   }
 
 }

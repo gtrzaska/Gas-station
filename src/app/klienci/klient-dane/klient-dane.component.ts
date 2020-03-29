@@ -56,7 +56,7 @@ export class KlientDaneComponent implements OnInit {
   }
 
   edytuj(form: NgForm) {
-    this.klienciService.edytujKlienta(this.user[3], form.value.imie, form.value.nazwisko, form.value.ulica, form.value.miasto, form.value.kodPocztowy, form.value.pesel, form.value.regon, form.value.nip);
+    this.klienciService.edytujKlienta(this.user[3], form.value.imie, form.value.nazwisko, form.value.ulica, form.value.miasto, form.value.kodPocztowy, form.value.pesel, form.value.regon, form.value.nip, this.user[10]);
   }
 
   kodPocztowyV(kod: string) {

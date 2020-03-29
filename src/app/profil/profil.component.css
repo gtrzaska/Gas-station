@@ -1,0 +1,22 @@
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border: 1px solid limegreen;
+}
+
+input.is-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+button {
+  margin: 8px 6px 8px 1px;
+}

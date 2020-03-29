@@ -1,0 +1,243 @@
+<ur-loader *ngIf="profilService.isLoading"></ur-loader>
+<div class="row" *ngIf="uprawnienia > 0 ">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="imie">Imię: </label>
+        <input type="text"
+               id="imie"
+               [ngModel]="profilService.user[1]"
+               class="form-control"
+               name="imie"
+               ngModel
+               required
+               imie
+               #imie="ngModel">
+        <span class="help-block" *ngIf="!imie.valid && imie.touched" style="color:red; font-size: 10px">Imie jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="nazwisko">Nazwisko: </label>
+        <input type="text"
+               id="nazwisko"
+               [ngModel]="profilService.user[2]"
+               class="form-control"
+               name="nazwisko"
+               ngModel
+               #nazwisko="ngModel"
+               required>
+        <span class="help-block" *ngIf="!nazwisko.valid && nazwisko.touched" style="color:red; font-size: 10px">Nazwisko jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="haslo">Hasło: </label>
+        <input type="password"
+               id="haslo"
+               disabled
+               class="form-control"
+               name="haslo"
+               [ngModel]="profilService.user[4]"
+               ngModel
+               required
+               haslo
+               #haslo="ngModel">
+        <span class="help-block" *ngIf="!haslo.valid && haslo.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text"
+               id="email"
+               disabled
+               class="form-control"
+               name="email"
+               [ngModel]="profilService.user[3]"
+               ngModel
+               required
+               email
+               #email="ngModel">
+        <span class="help-block" *ngIf="!email.valid && email.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
+      </div>
+      <div class="form-group">
+        <label for="stanowisko">Stanowisko : </label>
+        <select class="custom-select form-control mr-sm-2"
+                id="stanowisko"
+                name="stanowisko"
+                ngModel
+                required
+                disabled
+                #stanowisko="ngModel">
+          <option value="1" [selected]="profilService.user[5] == '1'">Właściciel</option>
+          <option value="2" [selected]="profilService.user[5] == '2'">Kasjer</option>
+          <option value="3" [selected]="profilService.user[5] == '3'">Ochroniarz</option>
+          <option value="4" [selected]="profilService.user[5] == '4'">Obsługa myjni</option>
+          <option value="5" [selected]="profilService.user[5] == '5'">Obsługa dystrybutora</option>
+        </select>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="edytuj(f)"
+                [disabled]="!f.valid ">Edytuj
+        </button>
+        <button class="btn btn-danger" (click)="usun()" *ngIf="uprawnienia != 1">Usuń
+        </button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row" *ngIf="uprawnienia === 0">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="imieu">Imię: </label>
+        <input type="text"
+               id="imieu"
+               value="user[1]"
+               [ngModel]="profilService.user[1]"
+               class="form-control"
+               name="imieu"
+               ngModel
+               required
+               imieu
+               #imieu="ngModel">
+        <span class="help-block" *ngIf="!imieu.valid && imieu.touched" style="color:red; font-size: 10px">Imie jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="nazwiskou">Nazwisko: </label>
+        <input type="text"
+               id="nazwiskou"
+               [ngModel]="profilService.user[2]"
+               class="form-control"
+               name="nazwiskou"
+               ngModel
+               #nazwiskou="ngModel"
+               required>
+        <span class="help-block" *ngIf="!nazwiskou.valid && nazwiskou.touched" style="color:red; font-size: 10px">Nazwisko jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="emailu">Email: </label>
+        <input type="text"
+               id="emailu"
+               disabled
+               class="form-control"
+               name="emailu"
+               [ngModel]="profilService.user[3]"
+               ngModel
+               required
+               #emailu="ngModel">
+        <span class="help-block" *ngIf="!emailu.valid && emailu.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
+      </div>
+      <div>
+        <label for="haslou">Hasło: </label>
+        <input type="password"
+               id="haslou"
+               [ngModel]="profilService.user[10]"
+               class="form-control"
+               name="haslou"
+               ngModel
+               minlength="2"
+               maxlength="42"
+               #haslou="ngModel"
+               required>
+        <span class="help-block"
+              *ngIf="(!haslou.valid) && haslou.touched "
+              style="color:red; font-size: 10px">Hasło jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="ulica">Ulica: </label>
+        <input type="text"
+               id="ulica"
+               [ngModel]="profilService.user[4]"
+               class="form-control"
+               name="ulica"
+               ngModel
+               #ulica="ngModel"
+               required>
+        <span class="help-block" *ngIf="!ulica.valid && ulica.touched" style="color:red; font-size: 10px">Ulica jest wymagana!</span>
+      </div>
+      <div class="form-group">
+        <label for="miasto">Miasto: </label>
+        <input type="text"
+               id="miasto"
+               [ngModel]="profilService.user[5]"
+               class="form-control"
+               name="miasto"
+               ngModel
+               #miasto="ngModel"
+               required
+        >
+        <span class="help-block" *ngIf="!miasto.valid && miasto.touched" style="color:red; font-size: 10px">Miasto jest wymagane!</span>
+      </div>
+      <div class="form-group">
+        <label for="kodPocztowy">Kod pocztowy: </label>
+        <input type="text"
+               id="kodPocztowy"
+               [ngModel]="profilService.user[6]"
+               class="form-control"
+               name="kodPocztowy"
+               ngModel
+               #kodPocztowy="ngModel"
+               required
+               [ngClass]="{ 'is-invalid':!kodPocztowyV(kodPocztowy.value)}"
+        >
+        <span class="help-block"
+              *ngIf="(!kodPocztowy.valid  || !kodPocztowyV(kodPocztowy.value)) && kodPocztowy.touched "
+              style="color:red; font-size: 10px">Kod pocztowy jest niepoprawny!</span>
+      </div>
+      <div>
+        <label for="firma" style="marginRight:8px">Firma</label>
+        <input type="checkbox" [checked]="profilService.czyFirma" id="firma" name="firma" value="firma"
+               (click)="profilService.onFirma()">
+      </div>
+      <div *ngIf="!profilService.czyFirma">
+        <label for="pesel">PESEL: </label>
+        <input type="pesel"
+               id="pesel"
+               class="form-control"
+               name="pesel"
+               [ngModel]="profilService.user[7]"
+               ngModel
+               #pesel="ngModel"
+               [ngClass]="{ 'is-invalid':!peselV(pesel.value)}"
+               required>
+        <span class="help-block"
+              *ngIf="(!pesel.valid  || !peselV(pesel.value)) && pesel.touched "
+              style="color:red; font-size: 10px">Pesel jest niepoprawny!</span>
+      </div>
+      <div *ngIf=" profilService.czyFirma">
+        <label for="regon">REGON: </label>
+        <input type="regon"
+               id="regon"
+               [ngModel]="profilService.user[8]"
+               class="form-control"
+               name="regon"
+               ngModel
+               #regon="ngModel"
+               [ngClass]="{ 'is-invalid':!regonV(regon.value)}"
+               required>
+        <span class="help-block"
+              *ngIf="(!regon.valid  || !regonV(regon.value)) && regon.touched "
+              style="color:red; font-size: 10px">REGON jest niepoprawny!</span>
+      </div>
+      <div>
+        <label for="nip">NIP: </label>
+        <input type="nip"
+               id="nip"
+               [ngModel]="profilService.user[9]"
+               class="form-control"
+               name="nip"
+               ngModel
+               #nip="ngModel"
+               required>
+        <span class="help-block"
+              *ngIf="(!nip.valid  || !nipV(nip.value)) && nip.touched "
+              style="color:red; font-size: 10px">NIP jest niepoprawny!</span>
+      </div>
+      <div>
+        <button class="btn btn-primary"
+                [disabled]="!f.valid || !zipcode " (click)="edytuj(f)">Edytuj
+        </button>
+        <button class="btn btn-danger" (click)="usun()">Usuń
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -23,7 +23,10 @@
           <a href="#" [routerLink]="['auth','rejestracja']">Rejestracja</a>
         </li>
         <li *ngIf="isAuth">
-          <a [routerLink]="['']" (click)="logout()" >Wyloguj</a>
+          <a [routerLink]="['profil']">Profil</a>
+        </li>
+        <li *ngIf="isAuth">
+          <a [routerLink]="['']" (click)="logout()">Wyloguj</a>
         </li>
       </ul>
     </div>
