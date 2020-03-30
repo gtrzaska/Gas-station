@@ -1,0 +1,71 @@
+<ur-loader *ngIf="rezerwacjaService.isLoading"></ur-loader>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <form #f="ngForm">
+
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text"
+               id="email"
+               [disabled]="rezerwacjaService.uprawnienia === 0"
+               class="form-control"
+               name="email"
+               [ngModel]="this.rezerwacjaService.email"
+               ngModel
+               required
+               email
+               #email="ngModel">
+        <span class="help-block" *ngIf="!email.valid && email.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
+      </div>
+
+      <div class="form-group">
+        <label for="data">Data </label>
+        <input type="text"
+               class="form-control"
+               id="data"
+               name="data"
+               required
+               placeholder="Wybierz date"
+               [minDate]="minDate"
+               [maxDate]="maxDate"
+               bsDatepicker
+               ngModel
+               [bsConfig]="{ isAnimated: true }">
+      </div>
+      <!-- <span class="help-block" *ngIf="!data.valid && data.touched" style="color:red; font-size: 10px">Podaj datę!</span>-->
+
+      <div class="form-group">
+        <label for="godzina">Godzina </label>
+        <input type="number"
+               id="godzina"
+               class="form-control"
+               name="godzina"
+               ngModel
+               [ngModel]="7"
+               #godzina="ngModel"
+               step="1"
+               min="7"
+               max="22"
+               required>
+
+        <span class="help-block" *ngIf="!godzina.valid && godzina.touched || godzina.value >22 || godzina.value < 7"
+              style="color:red; font-size: 10px">Wprowadź poprawną godzine!</span>
+      </div>
+      <div>
+        <button class="btn btn-success" [disabled]="!f.valid " (click)="dodaj(f)">Zarezerwuj
+        </button>
+
+      </div>
+    </form>
+  </div>
+</div>
+<!--<div>
+  <label >Dzień </label>
+  <mat-form-field  style="border: rgba(0,0,0,0.2) 1px solid; border-radius: 6px; padding: 4px">
+    <input matInput
+           [min]="minDate" [max]="maxDate"
+           [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>-->

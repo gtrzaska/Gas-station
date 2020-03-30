@@ -12,8 +12,7 @@ export class PracownicyDaneComponent implements OnInit {
 
   id: number;
   user;
-  peselPom: string;
-  regonPom: string;
+
 
   constructor(private route: ActivatedRoute,
               public pracownicyService: PracownicyService,

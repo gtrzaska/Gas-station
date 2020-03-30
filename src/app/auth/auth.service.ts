@@ -31,7 +31,7 @@ export class AuthService {
       }, error => {
         if (error.status == '200') {
           if (tryb === 'rejestracja') {
-            this.handleUser(email, '0');
+            this.handleUser(email, '0', imie, nazwisko);
             this.router.navigate(['']);
             this.isLoading = false;
           } else if (tryb === 'rejestracja2') {
@@ -60,9 +60,9 @@ export class AuthService {
         console.log(data[0].Uprawnienia);
         if (data[0]) {
           if (data[0].Uprawnienia === '0') {
-            this.handleUser(data[0].Email, data[0].Uprawnienia);
+            this.handleUser(data[0].Email, data[0].Uprawnienia, data[0].Imie, data[0].Nazwisko);
           } else {
-            this.handleUser(data[0].Email, data[0].FK_Uprawnienie);
+            this.handleUser(data[0].Email, data[0].FK_Uprawnienie, data[0].Imie, data[0].Nazwisko);
           }
           this.isLoading = false;
           this.router.navigate(['']);
@@ -77,12 +77,14 @@ export class AuthService {
   autoLogin() {
     const userData: {
       email: string,
-      uprawnienia: string
+      uprawnienia: string,
+      imie: string,
+      nazwisko: string
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       return;
     }
-    this.user.next(new User(userData.email, userData.uprawnienia));
+    this.user.next(new User(userData.email, userData.uprawnienia, userData.imie, userData.nazwisko));
     console.log('as ' + this.user.value.uprawnienia);
   }
 
@@ -91,8 +93,8 @@ export class AuthService {
     localStorage.removeItem('userData');
   }
 
-  private handleUser(email: string, uprawnienia: string) {
-    const user = new User(email, uprawnienia);
+  private handleUser(email: string, uprawnienia: string, imie: string, nazwisko: string) {
+    const user = new User(email, uprawnienia, imie, nazwisko);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
   }

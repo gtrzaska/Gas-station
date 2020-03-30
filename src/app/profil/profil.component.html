@@ -31,13 +31,11 @@
         <label for="haslo">Hasło: </label>
         <input type="password"
                id="haslo"
-               disabled
                class="form-control"
                name="haslo"
                [ngModel]="profilService.user[4]"
                ngModel
                required
-               haslo
                #haslo="ngModel">
         <span class="help-block" *ngIf="!haslo.valid && haslo.touched" style="color:red; font-size: 10px">Wprowadź poprawny email!</span>
       </div>

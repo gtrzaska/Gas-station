@@ -1,0 +1,27 @@
+<!--<ur-loader *ngIf=".isLoading"></ur-loader>-->
+<div class="row">
+  <div class="col-xs-12">
+    <button (click)="odswierzListe()" class=" btn btn-success">Odświerz</button>
+    <button (click)="onMoje()" class=" btn btn-success" *ngIf="rezerwacjaService.uprawnienia === 0 && !moje">Wyświetl
+      tylko Moje
+    </button>
+    <button (click)="onMoje()" class=" btn btn-success" *ngIf="rezerwacjaService.uprawnienia === 0 && moje">Wyświetl
+      wszystkie
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div>
+
+
+    <div class="left" *ngFor="let rezerwacja of rezerwacjaService.rezerwacjeA, let i = index" style="width:40vw">
+      <a style="cursor: pointer;" class="list-group-item clearfix"
+         *ngIf="(moje && rezerwacja[3] == rezerwacjaService.email) || !moje">
+        <h4 class="list-group-item-heading">{{"Data: " + rezerwacja[1] + " Godzina: " + rezerwacja[2] + ":00"}}</h4>
+        <p class="list-group-item-text">{{rezerwacja[4] + " " + rezerwacja[5] + " " + rezerwacja[3]}}</p>
+      </a>
+    </div>
+
+
+  </div>
+</div>

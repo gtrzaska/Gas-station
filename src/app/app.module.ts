@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthComponent} from './auth/auth.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CennikComponent} from './cennik/cennik.component';
@@ -19,6 +20,17 @@ import {PracownicyDaneComponent} from './pracownicy/pracownicy-dane/pracownicy-d
 import {PracownikComponent} from './pracownicy/pracownicy-lista/pracownik/pracownik.component';
 import {PracownikNowyComponent} from './pracownicy/pracownik-nowy/pracownik-nowy.component';
 import {ProfilComponent} from './profil/profil.component';
+import {RezerwacjaComponent} from './rezerwacja/rezerwacja.component';
+import {RezerwacjaDodajComponent} from './rezerwacja/rezerwacja-dodaj/rezerwacja-dodaj.component';
+import {RezerwacjaListaComponent} from './rezerwacja/rezerwacja-lista/rezerwacja-lista.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -35,16 +47,31 @@ import {ProfilComponent} from './profil/profil.component';
     PracownicyDaneComponent,
     PracownikComponent,
     PracownikNowyComponent,
-    ProfilComponent
+    ProfilComponent,
+    RezerwacjaComponent,
+    RezerwacjaDodajComponent,
+    RezerwacjaListaComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
+
   ],
-  providers: [HeaderComponent],
+  providers: [HeaderComponent,
+    MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {
