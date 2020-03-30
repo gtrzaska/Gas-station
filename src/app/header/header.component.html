@@ -8,6 +8,9 @@
         <li routerLinkActive="active">
           <a [routerLink]="['cennik']">Cennik</a>
         </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['rezerwacja']">Rezerwacje</a>
+        </li>
         <li routerLinkActive="active" *ngIf=" this.uprawnienia > 0 ">
           <a [routerLink]="['klienci']">Użytkownicy</a>
         </li>
