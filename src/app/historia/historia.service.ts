@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 import {HttpClient} from "@angular/common/http";
+import * as jsPDF from 'jspdf';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,30 @@ export class HistoriaService implements OnInit {
       console.log(this.historia);
       this.isLoading = false;
     }, error => console.error(error));
+  }
+
+  faktura(transakcja: any) {
+    var doc = new jsPDF()
+    doc.setFontSize(17);
+    doc.text('Stacja benzynowa PB', 75, 10);
+    doc.text('ul. Jana Pawla II 37, 31-864 Krakow', 60, 20);
+    doc.text('NIP: 777-12-75-454', 80, 30);
+    doc.line(20, 40, 190, 40);
+    doc.text('FAKTURA', 85, 50);
+    doc.setFontSize(13);
+    doc.text('Nabywca:', 30, 60);
+    doc.text(transakcja[6] + " " + transakcja[7], 30, 68);
+    doc.text('NIP: ' + transakcja[11], 30, 76);
+    doc.line(20, 84, 190, 84);
+    doc.text(transakcja[5], 30, 92);
+    doc.text(transakcja[2] + " * " + (+transakcja[3] / +transakcja[2]).toFixed(2), 30, 100);
+    doc.text(transakcja[3] + " zl", 30, 108);
+    doc.line(20, 115, 190, 115);
+    doc.setFontSize(20);
+    doc.text(" SUMA", 30, 124);
+    doc.text("PLN      " + transakcja[3], 130, 124);
+
+    doc.save('faktura.pdf')
   }
 
 }

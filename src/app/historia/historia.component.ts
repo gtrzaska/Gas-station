@@ -42,6 +42,10 @@ export class HistoriaComponent implements OnInit {
     }
   }
 
+  pobierz(transakcja: any) {
+    this.historiaService.faktura(transakcja);
+  }
+
   transakcjaClick(i: number) {
     if (this.wybor != i) {
       this.wybor = i;

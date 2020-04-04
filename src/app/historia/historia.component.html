@@ -53,7 +53,7 @@
             <p *ngIf="transakcja[11]!= ''">{{ "NIP: " + transakcja[11]}}</p>
           </div>
           <div class="col-sm-2" *ngIf="transakcja[8]!= ''">
-            <button style="" class="btn btn-success">
+            <button style="" class="btn btn-success" (click)="pobierz(transakcja)">
               Faktura
             </button>
           </div>
