@@ -9,6 +9,7 @@ import {PracownicyDaneComponent} from "./pracownicy/pracownicy-dane/pracownicy-d
 import {PracownikNowyComponent} from "./pracownicy/pracownik-nowy/pracownik-nowy.component";
 import {ProfilComponent} from "./profil/profil.component";
 import {RezerwacjaComponent} from "./rezerwacja/rezerwacja.component";
+import {HistoriaComponent} from "./historia/historia.component";
 
 const appRoutes: Routes = [
   {
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   },
   {path: 'cennik', component: CennikComponent},
   {path: 'rezerwacja', component: RezerwacjaComponent},
+  {path: 'historia', component: HistoriaComponent},
   {path: 'profil', component: ProfilComponent},
   {
     path: 'klienci', component: KlienciComponent,

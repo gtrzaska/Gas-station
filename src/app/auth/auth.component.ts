@@ -33,7 +33,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(
       (params: Params) => {
         this.tryb = params.tryb;

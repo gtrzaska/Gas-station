@@ -52,11 +52,12 @@ export class KlienciService implements OnInit {
 
   }
 
-  usunKlienta(email: string) {
-    let onusun = 'usunKlienta)';
+  usunKlienta(id: number, email: string) {
+    let onusun = 'usunKlienta';
     this.http.post<any>(this.link + 'users.php', {
       email,
-      onusun
+      onusun,
+      id
     })
       .subscribe(error => {
 

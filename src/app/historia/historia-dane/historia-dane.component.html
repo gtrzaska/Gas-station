@@ -1,0 +1,13 @@
+<div class="row" (click)="isClicked = !isClicked">
+
+  <tr>
+    <td>{{id}}</td>
+    <td>{{transakcja[5]}}</td>
+    <td>{{transakcja[2]}}</td>
+    <td>{{transakcja[3]}}</td>
+    <td>{{transakcja[4]}}</td>
+  </tr>
+
+  <p class="list-group-item-text help-block"
+     *ngIf="isClicked">{{ transakcja[6] + " | " + transakcja[7] + " | " + transakcja[8] + " | nip: " + transakcja[11]}}</p>
+</div>

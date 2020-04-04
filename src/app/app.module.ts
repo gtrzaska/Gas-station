@@ -30,6 +30,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {HistoriaComponent} from './historia/historia.component';
+import {HistoriaDaneComponent} from './historia/historia-dane/historia-dane.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
     ProfilComponent,
     RezerwacjaComponent,
     RezerwacjaDodajComponent,
-    RezerwacjaListaComponent
+    RezerwacjaListaComponent,
+    HistoriaComponent,
+    HistoriaDaneComponent
 
   ],
   imports: [

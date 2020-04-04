@@ -1,0 +1,77 @@
+<ur-loader *ngIf="historiaService.isLoading"></ur-loader>
+<div class="row">
+  <div class="col-xs-12">
+    <button (click)="odswierzListe()" class=" btn btn-success">Odświerz</button>
+    <button (click)="obcMiesiac()" class=" btn btn-success" *ngIf="!obecny">Obecny miesiąc</button>
+    <button (click)="obcMiesiac()" class=" btn btn-success" *ngIf="obecny">Wszystkie</button>
+  </div>
+</div>
+<div class="row">
+  <div>
+
+
+    <!-- <div class="left" *ngFor="let transakcja of historiaService.historia, let i = index" style="width:70vw">
+       <a style="cursor: pointer;" class="list-group-item clearfix" >
+         <h6 name="i" ngDefaultControl ngModel #i="ngModel" class="list-group-item-text">{{i + " | " + transakcja[5] + " | " + transakcja[2] + " | " + transakcja[3]+ " | " + transakcja[4]}}</h6>
+         <p class="list-group-item-text" >{{ transakcja[6] + " | " + transakcja[7] + " | " + transakcja[8]+ " | nip: " + transakcja[11]}}</p>
+       </a>
+     </div>-->
+
+
+    <table class="table table-hover">
+      <thead>
+      <tr style="font-size: 16px">
+        <th>Lp.</th>
+        <th>Produkt</th>
+        <th>Ilość</th>
+        <th>Cena</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let transakcja of historiaService.historia, let i = index " (click)="transakcjaClick(i)">
+      <tr style="cursor: pointer; font-size: 16px">
+        <td>{{i}}</td>
+        <td>{{transakcja[5]}}</td>
+        <td>{{transakcja[2]}}</td>
+        <td>{{transakcja[3]}}</td>
+        <td>{{transakcja[4]}}</td>
+        <td>
+          <img src="https://image.flaticon.com/icons/png/512/60/60799.png" alt="rozwin" width="12px"
+               style="transform:rotate(180deg);" *ngIf="wybor != i">
+          <img src="https://image.flaticon.com/icons/png/512/60/60799.png" alt="rozwin" width="12px"
+               *ngIf="wybor === i">
+        </td>
+      </tr>
+      <tr *ngIf="wybor === i" [@fadeInOut]>
+        <td colspan="5" style="border: none">
+          <div class="col-sm-10" style="font-size: 14px">
+            <p> {{ "Użytkownik: " + transakcja[6] + " " + transakcja[7] }} </p>
+            <p *ngIf="transakcja[8]!= ''">{{ "Email: " + transakcja[8]}}</p>
+            <p *ngIf="transakcja[9] != ''">{{ "PESEL: " + transakcja[9]}}</p>
+            <p *ngIf="transakcja[10] != ''">{{ "REGON: " + transakcja[10]}}</p>
+            <p *ngIf="transakcja[11]!= ''">{{ "NIP: " + transakcja[11]}}</p>
+          </div>
+          <div class="col-sm-2" *ngIf="transakcja[8]!= ''">
+            <button style="" class="btn btn-success">
+              Faktura
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--<app-historia-dane *ngFor="let transakcja of historiaService.historia, let i = index" [transakcja]="transakcja" [id]="i"></app-historia-dane>-->
+<!--      <tbody *ngFor="let transakcja of historiaService.historia, let i = index " (click)="showRadio(i)">
+      <tr >
+        <td>{{i}}</td>
+        <td>{{transakcja[5]}}</td>
+        <td>{{transakcja[3]}}</td>
+        <td>{{transakcja[4]}}</td>
+      </tr>
+      <p class="list-group-item-text help-block" *ngIf="i.touched" >{{ transakcja[6] + " | " + transakcja[7] + " | " + transakcja[8]+ " | nip: " + transakcja[11]}}</p>
+
+      </tbody> -->

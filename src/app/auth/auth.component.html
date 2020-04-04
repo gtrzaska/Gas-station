@@ -157,8 +157,11 @@
                 [disabled]="!f.valid">Logowanie
         </button>
         <span class="help-block"
-              *ngIf="!poprawneDane "
+              *ngIf="!authService.logowanie && tryb === 'logowanie'"
               style="color:red; font-size: 12px">Nieprawidłowy email lub hasło!</span>
+        <span class="help-block"
+              *ngIf="!authService.logowanie && tryb === 'rejestracja'"
+              style="color:red; font-size: 12px">Email zajęty!</span>
       </div>
     </form>
   </div>
