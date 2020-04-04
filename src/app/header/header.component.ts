@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   isAuth = false;
   public email: string;
   public uprawnienia: number;
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit() {

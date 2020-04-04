@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {AuthService} from "../auth/auth.service";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export class RezerwacjaService {
+export class RezerwacjaService implements OnInit {
   private isAuth = false;
   isLoading = false;
   public email = ""

@@ -52,7 +52,7 @@ export class KlientDaneComponent implements OnInit {
   }
 
   usun() {
-    this.klienciService.usunKlienta(this.user[3]);
+    this.klienciService.usunKlienta(+this.user[0], this.user[3]);
   }
 
   edytuj(form: NgForm) {

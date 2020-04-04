@@ -15,7 +15,7 @@ export class AuthService {
   link = 'http://gtrzaska.cba.pl/';
   user = new BehaviorSubject<User>(null);
   isLoading = false;
-
+  logowanie = true;
   constructor(private http: HttpClient, private router: Router, private klienciService: KlienciService) {
   }
 
@@ -41,7 +41,8 @@ export class AuthService {
           }
         } else {
           this.user.next(null);
-          alert("Email zajęty!");
+          //  alert("Email zajęty!");
+          this.logowanie = false;
           this.isLoading = false;
         }
         /*else {
@@ -56,8 +57,8 @@ export class AuthService {
     this.http.post<any>(this.link + 'login.php', {email, password})
       .subscribe(data => {
 
-        console.log(data[0]);
-        console.log(data[0].Uprawnienia);
+        // console.log(data[0]);
+        //console.log(data[0].Uprawnienia);
         if (data[0]) {
           if (data[0].Uprawnienia === '0') {
             this.handleUser(data[0].Email, data[0].Uprawnienia, data[0].Imie, data[0].Nazwisko);
@@ -68,7 +69,8 @@ export class AuthService {
           this.router.navigate(['']);
         } else {
           this.user.next(null);
-          alert("Zły email lub hasło!");
+          this.logowanie = false;
+          // alert("Zły email lub hasło!");
           this.isLoading = false;
         }
       }, error => console.error(error));
@@ -90,6 +92,7 @@ export class AuthService {
 
   logout() {
     this.user.next(null);
+    this.logowanie = true;
     localStorage.removeItem('userData');
   }
 

@@ -9,7 +9,10 @@
           <a [routerLink]="['cennik']">Cennik</a>
         </li>
         <li routerLinkActive="active">
-          <a [routerLink]="['rezerwacja']">Rezerwacje</a>
+          <a [routerLink]="['rezerwacja']" *ngIf=" this.uprawnienia >= 0 ">Rezerwacje</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['historia']" *ngIf=" this.uprawnienia >= 0 ">Transakcje</a>
         </li>
         <li routerLinkActive="active" *ngIf=" this.uprawnienia > 0 ">
           <a [routerLink]="['klienci']">Użytkownicy</a>
@@ -20,9 +23,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li routerLinkActive="active" *ngIf="!isAuth">
-          <a [routerLink]="['auth','logowanie']">Logowanie</a>
+          <a [routerLink]="['auth','logowanie']" (click)="authService.logowanie = true">Logowanie</a>
         </li>
-        <li routerLinkActive="active" *ngIf="!isAuth">
+        <li routerLinkActive="active" *ngIf="!isAuth" (click)="authService.logowanie = true">
           <a href="#" [routerLink]="['auth','rejestracja']">Rejestracja</a>
         </li>
         <li *ngIf="isAuth">
