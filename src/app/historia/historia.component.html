@@ -1,7 +1,7 @@
 <ur-loader *ngIf="historiaService.isLoading"></ur-loader>
 <div class="row">
   <div class="col-xs-12">
-    <button (click)="odswierzListe()" class=" btn btn-success">Odświerz</button>
+    <button (click)="odswierzListe()" class=" btn btn-success">Odśwież</button>
     <button (click)="obcMiesiac()" class=" btn btn-success" *ngIf="!obecny">Obecny miesiąc</button>
     <button (click)="obcMiesiac()" class=" btn btn-success" *ngIf="obecny">Wszystkie</button>
   </div>

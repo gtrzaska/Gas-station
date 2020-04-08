@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -32,6 +32,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {HistoriaComponent} from './historia/historia.component';
 import {HistoriaDaneComponent} from './historia/historia-dane/historia-dane.component';
+import {MonitoringComponent} from './monitoring/monitoring.component';
+import {ProgramLojalnosciowyComponent} from './program-lojalnosciowy/program-lojalnosciowy.component';
+import {DostawyComponent} from './dostawy/dostawy.component';
 
 
 @NgModule({
@@ -54,7 +57,10 @@ import {HistoriaDaneComponent} from './historia/historia-dane/historia-dane.comp
     RezerwacjaDodajComponent,
     RezerwacjaListaComponent,
     HistoriaComponent,
-    HistoriaDaneComponent
+    HistoriaDaneComponent,
+    MonitoringComponent,
+    ProgramLojalnosciowyComponent,
+    DostawyComponent
 
   ],
   imports: [
@@ -75,7 +81,8 @@ import {HistoriaDaneComponent} from './historia/historia-dane/historia-dane.comp
 
   ],
   providers: [HeaderComponent,
-    MatDatepickerModule],
+    MatDatepickerModule,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

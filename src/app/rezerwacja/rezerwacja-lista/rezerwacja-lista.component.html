@@ -1,7 +1,7 @@
 <ur-loader *ngIf="rezerwacjaService.isLoading"></ur-loader>
 <div class="row">
   <div class="col-xs-12">
-    <button (click)="odswierzListe()" class=" btn btn-success">Odświerz</button>
+    <button (click)="odswierzListe()" class=" btn btn-success">Odśwież</button>
     <button (click)="onMoje()" class=" btn btn-success" *ngIf="rezerwacjaService.uprawnienia === 0 && !moje">Wyświetl
       tylko Moje
     </button>
