@@ -20,6 +20,15 @@
         <li routerLinkActive="active" *ngIf=" this.uprawnienia === 1 ">
           <a [routerLink]="['pracownicy']">Pracownicy</a>
         </li>
+        <li routerLinkActive="active" *ngIf=" this.uprawnienia >= 0  ">
+          <a [routerLink]="['program-lojalnosciowy']">Program lojalnosciowy</a>
+        </li>
+        <li routerLinkActive="active" *ngIf=" this.uprawnienia === 3 || this.uprawnienia === 1  ">
+          <a [routerLink]="['monitoring']">Monitoring</a>
+        </li>
+        <li routerLinkActive="active" *ngIf=" this.uprawnienia === 3 || this.uprawnienia === 1  ">
+          <a [routerLink]="['dostawy']">Dostawy</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li routerLinkActive="active" *ngIf="!isAuth">

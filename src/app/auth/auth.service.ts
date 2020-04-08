@@ -16,6 +16,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   isLoading = false;
   logowanie = true;
+
   constructor(private http: HttpClient, private router: Router, private klienciService: KlienciService) {
   }
 
@@ -26,8 +27,8 @@ export class AuthService {
       email, password, imie, nazwisko, ulica,
       miasto, kod, pesel, regon, nip
     })
-      .subscribe(error => {
-
+      .subscribe(t => {
+        console.log(t);
       }, error => {
         if (error.status == '200') {
           if (tryb === 'rejestracja') {
@@ -39,16 +40,16 @@ export class AuthService {
             this.klienciService.klienci();
             this.isLoading = false;
           }
-        } else {
+        } else if (error.status == '201') {
           this.user.next(null);
-          //  alert("Email zajęty!");
+          // alert("Email zajęty!");
           this.logowanie = false;
           this.isLoading = false;
-        }
-        /*else {
+        } else {
           this.user.next(null);
           alert("Coś nie tak")
-        }*/
+          this.isLoading = false;
+        }
       });
   }
 
