@@ -81,8 +81,7 @@ import {DostawyComponent} from './dostawy/dostawy.component';
 
   ],
   providers: [HeaderComponent,
-    MatDatepickerModule,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}],
+    MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,55 +1,164 @@
-
-<div class="row">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <form (ngSubmit)="onSubmit(f)" #f = "ngForm">
-      <div class="form-group" >
-        <label>Benzyna E95: </label>
-        <input type="number"
-               id="e95"
-               class="form-control"
-               name = "e95"
-               [ngModel]="cenaE95"
-               ngModel
-               step="0.01"
-               required
-               >
-      </div>
+<ur-loader *ngIf="cennikService.isLoading"></ur-loader>
+<div class="row" *ngIf="!cennikService.isLoading">
+  <div>
+    <form #f="ngForm">
+      <div class="col-xs-12 col-md-6">
+        <h3>Cennik paliw</h3>
+        <div class="form-group">
+          <label>{{cennikService.cennik[0][1]}}: </label>
+          <input type="number"
+                 id="e95"
+                 class="form-control"
+                 name="e95"
+                 [ngModel]="cennikService.cennik[0][2]"
+                 ngModel
+                 min="0.01"
+                 step="0.01"
+                 required
+                 #e95
+          >
+          <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="e95.value<=0"
+                  (click)="cennikService.cenyZamien(cennikService.cennik[0][0], 'e95')" style="padding: 2px">
+            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+        </div>
       <div class="form-group">
-        <label for="e98">Benzyna E98: </label>
+        <label for="e98">{{cennikService.cennik[1][1]}}: </label>
         <input type="number"
                id="e98"
                class="form-control"
-               name = "e98"
-               [ngModel]="cenaE98"
+               name="e98"
+               [ngModel]="cennikService.cennik[1][2]"
                ngModel
+               min="0.01"
                step="0.01"
+               #e98
                required>
+        <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="e98.value<=0"
+                (click)="cennikService.cenyZamien(cennikService.cennik[1][0], 'e98')" style="padding: 2px">
+          <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
       </div>
       <div class="form-group">
-        <label for="on">Olej napędowy: </label>
+        <label for="on">{{cennikService.cennik[2][1]}}: </label>
         <input type="number"
                id="on"
                class="form-control"
-               name = "on"
+               name="on"
                ngModel
-               [ngModel]="cenaON"
+               [ngModel]="cennikService.cennik[2][2]"
                step="0.01"
+               min="0.01"
+               #on
                required>
+        <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="on.value<=0"
+                (click)="cennikService.cenyZamien(cennikService.cennik[2][0], 'on')" style="padding: 2px">
+          <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
       </div>
       <div class="form-group">
-        <label for="lpg">Lepszy Power Gamoniu </label>
+        <label for="lpg">{{cennikService.cennik[3][1]}}: </label>
         <input type="number"
                id="lpg"
-               [ngModel]="cenaLPG"
+               [ngModel]="cennikService.cennik[3][2]"
                class="form-control"
-               name = "lpg"
+               name="lpg"
                ngModel
+               min="0.01"
                step="0.01"
+               #lpg
                required>
+        <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="lpg.value<=0"
+                (click)="cennikService.cenyZamien(cennikService.cennik[3][0], 'lpg')" style="padding: 2px">
+          <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
       </div>
-      <div *ngIf="this.uprawnienia === 'pracownik' || this.uprawnienia === '1'">
-        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">{{'Zamień ceny'}}</button>
+        <h3>Cennik myjni</h3>
+        <div class="form-group">
+          <label>{{cennikService.cennik[4][1]}}: </label>
+          <input type="number"
+                 id="mycieStandardowe"
+                 class="form-control"
+                 name="mycieStandardowe"
+                 [ngModel]="cennikService.cennik[4][2]"
+                 ngModel
+                 min="0.01"
+                 step="0.01"
+                 #mycieStandardowe
+                 required
+          >
+          <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button"
+                  [disabled]="mycieStandardowe.value<=0"
+                  (click)="cennikService.cenyZamien(cennikService.cennik[4][0], 'mycieStandardowe')"
+                  style="padding: 2px">
+            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+        </div>
+        <div class="form-group">
+          <label>{{cennikService.cennik[5][1]}}: </label>
+          <input type="number"
+                 id="mycieZWoskowaniem"
+                 class="form-control"
+                 name="mycieZWoskowaniem"
+                 [ngModel]="cennikService.cennik[5][2]"
+                 ngModel
+                 min="0.01"
+                 step="0.01"
+                 #mycieZWoskowaniem
+                 required
+          >
+          <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button"
+                  [disabled]="mycieZWoskowaniem.value<=0"
+                  (click)="cennikService.cenyZamien(cennikService.cennik[5][0],'mycieZWoskowaniem')"
+                  style="padding: 2px">
+            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+        </div>
+        <!--        <div *ngIf="this.uprawnienia === '1'">
+                  <button class="btn btn-primary" type="button" [disabled]="!f.valid" (click)="cennikService.cenyZamien()">{{'Zamień ceny'}}</button>
+                </div>-->
       </div>
+      <div class="col-xs-12 col-md-6">
+        <h3>Sklep</h3>
+        <div *ngIf="this.uprawnienia == '1'">
+          <input type="text"
+                 id="nowyNazwa"
+                 class="form-control"
+                 name="nowyNazwa"
+                 required
+          >
+          <input type="number"
+                 id="nowyCena"
+                 class="form-control"
+                 name="nowyCena"
+                 min="0.01"
+                 step="0.01"
+                 required
+                 style="max-width: 105px; margin-bottom: 8px"
+          >
+          <button class="btn btn-success" type="button" (click)="dodajProdukt()">+</button>
+        </div>
+        <div style="max-height: 85vh; overflow-y: auto">
+          <div *ngFor="let produkt of cennikService.cennik| slice: 6; index as i ">
+            <div class="form-group">
+              <label>{{produkt[1]}}: </label>
+              <input type="number"
+                     [attr.id]="'p-'+produkt[0]"
+                     class="form-control"
+                     [attr.name]="'p-'+produkt[0]"
+                     [ngModel]="produkt[2]"
+                     ngModel
+                     [name]="'p-'+produkt[0]"
+                     min="0.01"
+                     step="0.01"
+                     required
+              >
+              <button class="btn btn-primary" type="button" *ngIf="this.uprawnienia == '1'"
+                      (click)="cennikService.cenyZamien(+produkt[0],'p-'+produkt[0] )"
+                      style="padding: 2px; margin-right: 7px">
+                <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+              <button class="btn btn-danger" type="button" *ngIf="this.uprawnienia === '1'"
+                      (click)="usunProdukt(produkt[0])">X
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </form>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth/auth.service';
+import {AuthService} from '../auth/auth.service';
+import {CennikService} from "./cennik.service";
 
 @Component({
   selector: 'app-cennik',
@@ -8,25 +9,31 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./cennik.component.css']
 })
 export class CennikComponent implements OnInit {
-  cenaE95 = 5.79;
-  cenaE98 = 5.99;
-  cenaON = 5.59;
-  cenaLPG = 2.89;
   uprawnienia: string;
-  constructor(public authService: AuthService) { }
+
+  constructor(public authService: AuthService, public cennikService: CennikService) {
+  }
 
   ngOnInit() {
     this.authService.user.subscribe(user => {
       if (user) {
         this.uprawnienia = user.uprawnienia;
-        console.log('h ' + user);
       }
     });
   }
-  onSubmit(authForm: NgForm) {
-    this.cenaE95 = authForm.value.e95;
-    this.cenaE98 = authForm.value.e98;
-    this.cenaON = authForm.value.on;
-    this.cenaLPG = authForm.value.lpg;
+
+
+  dodajProdukt() {
+    const nazwa = (<HTMLInputElement>document.getElementById('nowyNazwa')).value;
+    const cena = (<HTMLInputElement>document.getElementById('nowyCena')).value;
+
+    if (nazwa != '' && cena != '') {
+      console.log(nazwa + " " + cena);
+      this.cennikService.dodajProdukt(nazwa, cena)
+    }
+  }
+
+  usunProdukt(id) {
+    this.cennikService.usunProdukt(id)
   }
 }

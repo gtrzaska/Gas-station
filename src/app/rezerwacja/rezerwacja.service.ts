@@ -51,10 +51,8 @@ export class RezerwacjaService implements OnInit {
   }
 
   dodajRezerwacje(email: string, godzina: string, data: string) {
-    console.log(this.uprawnienia + " g");
     if (this.uprawnienia === 0) {
       email = this.email;
-      console.log(this.uprawnienia);
     }
     this.isLoading = true;
     let tryb = 'dodaj';
