@@ -9,10 +9,10 @@
           <a [routerLink]="['cennik']">Cennik</a>
         </li>
         <li routerLinkActive="active">
-          <a [routerLink]="['rezerwacja']" *ngIf=" this.uprawnienia >= 0 ">Rezerwacje</a>
+          <a [routerLink]="['rezerwacja']" *ngIf=" this.uprawnienia >= 0 && isAuth">Rezerwacje</a>
         </li>
         <li routerLinkActive="active">
-          <a [routerLink]="['historia']" *ngIf=" this.uprawnienia >= 0 ">Transakcje</a>
+          <a [routerLink]="['historia']" *ngIf=" this.uprawnienia >= 0 && isAuth">Transakcje</a>
         </li>
         <li routerLinkActive="active" *ngIf=" this.uprawnienia > 0 ">
           <a [routerLink]="['klienci']">Użytkownicy</a>
@@ -20,7 +20,7 @@
         <li routerLinkActive="active" *ngIf=" this.uprawnienia === 1 ">
           <a [routerLink]="['pracownicy']">Pracownicy</a>
         </li>
-        <li routerLinkActive="active" *ngIf=" this.uprawnienia >= 0  ">
+        <li routerLinkActive="active" *ngIf=" this.uprawnienia >= 0 && isAuth  ">
           <a [routerLink]="['program-lojalnosciowy']">Program lojalnosciowy</a>
         </li>
         <li routerLinkActive="active" *ngIf=" this.uprawnienia === 3 || this.uprawnienia === 1  ">
@@ -37,7 +37,7 @@
         <li routerLinkActive="active" *ngIf="!isAuth" (click)="authService.logowanie = true">
           <a href="#" [routerLink]="['auth','rejestracja']">Rejestracja</a>
         </li>
-        <li *ngIf="isAuth">
+        <li *ngIf="isAuth" routerLinkActive="active">
           <a [routerLink]="['profil']">Profil</a>
         </li>
         <li *ngIf="isAuth">

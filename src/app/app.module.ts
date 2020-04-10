@@ -35,6 +35,7 @@ import {HistoriaDaneComponent} from './historia/historia-dane/historia-dane.comp
 import {MonitoringComponent} from './monitoring/monitoring.component';
 import {ProgramLojalnosciowyComponent} from './program-lojalnosciowy/program-lojalnosciowy.component';
 import {DostawyComponent} from './dostawy/dostawy.component';
+import {DaneKontaktoweComponent} from './dane-kontaktowe/dane-kontaktowe.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {DostawyComponent} from './dostawy/dostawy.component';
     HistoriaDaneComponent,
     MonitoringComponent,
     ProgramLojalnosciowyComponent,
-    DostawyComponent
+    DostawyComponent,
+    DaneKontaktoweComponent
 
   ],
   imports: [
@@ -81,8 +83,7 @@ import {DostawyComponent} from './dostawy/dostawy.component';
 
   ],
   providers: [HeaderComponent,
-    MatDatepickerModule,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}],
+    MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {

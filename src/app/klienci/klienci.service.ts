@@ -14,7 +14,7 @@ export class KlienciService implements OnInit {
   constructor(private http: HttpClient, private router: Router) {
     //this.users = [];
     this.isLoading = true;
-    this.http.get(this.link + 'auth.php').subscribe(data => {
+    this.http.get(this.link + 'klienci_fetch.php').subscribe(data => {
       this.data.push(data);
       console.log(this.data);
       console.log("-3333---");
@@ -39,7 +39,7 @@ export class KlienciService implements OnInit {
     this.users = [];
     this.data = [];
     if (this.isFetch) {
-      this.http.get(this.link + 'auth.php').subscribe(data => {
+      this.http.get(this.link + 'klienci_fetch.php').subscribe(data => {
         this.data.push(data);
         console.log(this.data);
         for (let i = 0; i < this.data[0].length; i++) {

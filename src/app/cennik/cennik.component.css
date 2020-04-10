@@ -1,8 +1,21 @@
 input {
-  width: 50%;
   display: inline-block;
+  margin-right: 8px;
+  width: 45%
 }
+
 label {
   width: 30%;
   display: inline-block;
 }
+
+h3 {
+  text-align: center;
+}
+
+/*input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+input.ng-valid.ng-touched {
+  border: 1px solid limegreen;
+}*/

@@ -8,8 +8,8 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-
-    <app-pracownik *ngFor="let user of pracownicyService.users, let i = index" [user]="user" [id]="i"></app-pracownik>
-
+    <div style="max-height: 90vh; overflow-y: auto">
+      <app-pracownik *ngFor="let user of pracownicyService.users, let i = index" [user]="user" [id]="i"></app-pracownik>
+    </div>
   </div>
 </div>
