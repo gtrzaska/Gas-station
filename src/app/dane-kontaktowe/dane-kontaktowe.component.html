@@ -7,9 +7,58 @@
       <h4><b>Fax :</b> {{dane[2]}}</h4>
       <h4><b>Adres :</b> {{dane[0]}}</h4>
 
-      <button class="btn btn-primary " *ngIf="uprawnienia == 1"
+      <button class="btn btn-primary " *ngIf="uprawnienia == 1" (click)="isEdit=true"
               style="margin-top: 25px; margin-left: auto;margin-right: auto;display:block">Edytuj
       </button>
+    </div>
+    <div *ngIf="isEdit">
+      <form #f="ngForm">
+        <div class="form-group">
+          <label for="telefon">Telefon: </label>
+          <input type="text"
+                 id="telefon"
+                 value="user[1]"
+                 [ngModel]="dane[1]"
+                 class="form-control"
+                 name="telefon"
+                 ngModel
+                 required
+                 telefon
+                 #telefon="ngModel">
+          <span class="help-block" *ngIf="!telefon.valid && telefon.touched" style="color:red; font-size: 10px">Telefon jest wymagany!</span>
+        </div>
+        <div class="form-group">
+          <label for="fax">Fax: </label>
+          <input type="text"
+                 id="fax"
+                 [ngModel]="dane[2]"
+                 class="form-control"
+                 name="fax"
+                 ngModel
+                 #fax="ngModel"
+                 required>
+          <span class="help-block" *ngIf="!fax.valid && fax.touched" style="color:red; font-size: 10px">Fax jest wymagane!</span>
+        </div>
+        <div class="form-group">
+          <label for="adres">Adres: </label>
+          <input type="text"
+                 id="adres"
+                 class="form-control"
+                 name="adres"
+                 [ngModel]="dane[0]"
+                 ngModel
+                 required
+                 #adres="ngModel">
+          <span class="help-block" *ngIf="!adres.valid && adres.touched" style="color:red; font-size: 10px">Adres jest wymagany!</span>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" (click)="edytuj(f)"
+                  [disabled]="!f.valid ">Edytuj
+          </button>
+
+        </div>
+      </form>
     </div>
   </div>
 </div>
