@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
       if (this.isAuth) {
         this.email = user.email;
         this.uprawnienia = +user.uprawnienia;
+        console.log(this.uprawnienia);
       }
     });
   }

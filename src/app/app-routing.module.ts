@@ -13,8 +13,10 @@ import {HistoriaComponent} from "./historia/historia.component";
 import {ProgramLojalnosciowyComponent} from "./program-lojalnosciowy/program-lojalnosciowy.component";
 import {MonitoringComponent} from "./monitoring/monitoring.component";
 import {DostawyComponent} from "./dostawy/dostawy.component";
+import {DaneKontaktoweComponent} from "./dane-kontaktowe/dane-kontaktowe.component";
 
 const appRoutes: Routes = [
+  {path: '', component: DaneKontaktoweComponent},
   {
     path: 'auth/:tryb', component: AuthComponent, children: [
       {path: ':tryb', component: AuthComponent},
