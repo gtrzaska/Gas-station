@@ -1,0 +1,37 @@
+<ur-loader *ngIf="monitoringService.isLoading"></ur-loader>
+<div class="row" *ngIf="!monitoringService.isLoading">
+  <div style="margin: 0 auto; width: 385px">
+    <button class="btn btn-primary" (click)="monitoringService.stanFetch()" style="width: 100px">Odśwież</button>
+    <button class="btn btn-primary" (click)="procentPaliwa(1)" [disabled]="stan===1">E95</button>
+    <button class="btn btn-primary" (click)="procentPaliwa(2)" [disabled]="stan===2">E98</button>
+    <button class="btn btn-primary" (click)="procentPaliwa(3)" [disabled]="stan===3">ON</button>
+    <button class="btn btn-primary" (click)="procentPaliwa(4)" [disabled]="stan===4">LPG</button>
+  </div>
+  <h2 style="text-align: center">{{monitoringService.stan[stan - 1][1]}}</h2>
+  <h4><b>Poziom paliwa :</b> {{monitoringService.stan[stan - 1][2]}} l</h4>
+  <!--  <div class="progress" *ngIf="monitoringService.stan[stan-1][2] >= 7500">
+      <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-success" role="progressbar" [style.width.%]="(monitoringService.stan[stan-1][2]/30000) * 100" ></div>
+    </div>
+    <div class="progress" *ngIf="monitoringService.stan[stan-1][2] > 4000 && monitoringService.stan[stan-1][2] < 7500">
+      <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-warning" role="progressbar" [style.width.%]="(monitoringService.stan[stan-1][2]/30000) * 100" ></div>
+    </div>
+    <div class="progress" *ngIf="monitoringService.stan[stan-1][2] <= 4000">
+      <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-danger" role="progressbar" [style.width.%]="(monitoringService.stan[stan-1][2]/30000) * 100" ></div>
+    </div>-->
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-success"
+         role="progressbar"
+         [class.progress-bar-success]="monitoringService.stan[stan-1][2] >= 7500"
+         [class.progress-bar-warning]="monitoringService.stan[stan-1][2] > 4000 && monitoringService.stan[stan-1][2] < 7500"
+         [class.progress-bar-danger]="monitoringService.stan[stan-1][2] <= 4000"
+         [style.width.%]="(monitoringService.stan[stan-1][2]/30000) * 100">
+
+    </div>
+  </div>
+
+
+  <h4><b style="width: 136px">Ciśnienie :</b> {{monitoringService.stan[stan - 1][3]}} </h4>
+  <h4><b>Temperatura :</b> {{monitoringService.stan[stan - 1][4]}} &deg;C</h4>
+</div>
+

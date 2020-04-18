@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../auth/auth.service';
+import {MonitoringService} from "../monitoring/monitoring.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,16 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAuth = false;
+  data = [];
+  link = 'http://gtrzaska.cba.pl/';
   public email: string;
   public uprawnienia: number;
-  constructor(public authService: AuthService) {
+  alertMonitoring = false;
+
+  constructor(public authService: AuthService, private http: HttpClient) {
+    setInterval(() => {
+      this.stanFetch()
+    }, 1000);
   }
 
   ngOnInit() {
@@ -30,4 +39,21 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  stanFetch() {
+    let isAlert = false;
+    this.data = [];
+    this.http.get(this.link + 'monitoring_fetch.php').subscribe(data => {
+      this.data.push(data);
+      for (let i = 0; i < this.data[0].length; i++) {
+        if (this.data[0][i].poziom_paliwa <= 4000) {
+          isAlert = true;
+        }
+      }
+      if (isAlert) {
+        this.alertMonitoring = true;
+      } else {
+        this.alertMonitoring = false;
+      }
+    }, error => console.error(error));
+  }
 }
