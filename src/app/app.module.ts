@@ -36,6 +36,8 @@ import {MonitoringComponent} from './monitoring/monitoring.component';
 import {ProgramLojalnosciowyComponent} from './program-lojalnosciowy/program-lojalnosciowy.component';
 import {DostawyComponent} from './dostawy/dostawy.component';
 import {DaneKontaktoweComponent} from './dane-kontaktowe/dane-kontaktowe.component';
+import {MonitoringStanComponent} from './monitoring/monitoring-stan/monitoring-stan.component';
+import {MonitoringKameryComponent} from './monitoring/monitoring-kamery/monitoring-kamery.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import {DaneKontaktoweComponent} from './dane-kontaktowe/dane-kontaktowe.compone
     MonitoringComponent,
     ProgramLojalnosciowyComponent,
     DostawyComponent,
-    DaneKontaktoweComponent
+    DaneKontaktoweComponent,
+    MonitoringStanComponent,
+    MonitoringKameryComponent
 
   ],
   imports: [

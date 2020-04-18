@@ -74,7 +74,7 @@ export class KlienciService implements OnInit {
   }
 
   edytujKlienta(email: string, imie: string, nazwisko: string, ulica: string, miasto: string, kod: string, pesel: string, regon: string, nip: string, haslo: string) {
-    let onusun = 'edytujKlienta)';
+    let onusun = 'edytujKlienta';
     this.http.post<any>(this.link + 'users.php', {
       email, onusun, imie, nazwisko, ulica, miasto, kod, pesel, regon, nip, haslo
     })
