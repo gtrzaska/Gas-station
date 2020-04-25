@@ -38,6 +38,8 @@ import {DostawyComponent} from './dostawy/dostawy.component';
 import {DaneKontaktoweComponent} from './dane-kontaktowe/dane-kontaktowe.component';
 import {MonitoringStanComponent} from './monitoring/monitoring-stan/monitoring-stan.component';
 import {MonitoringKameryComponent} from './monitoring/monitoring-kamery/monitoring-kamery.component';
+import {DostawyProduktComponent} from './dostawy/dostawy-produkt/dostawy-produkt.component';
+import {DostawyZamowienieComponent} from './dostawy/dostawy-zamowienie/dostawy-zamowienie.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import {MonitoringKameryComponent} from './monitoring/monitoring-kamery/monitori
     DostawyComponent,
     DaneKontaktoweComponent,
     MonitoringStanComponent,
-    MonitoringKameryComponent
+    MonitoringKameryComponent,
+    DostawyProduktComponent,
+    DostawyZamowienieComponent
 
   ],
   imports: [

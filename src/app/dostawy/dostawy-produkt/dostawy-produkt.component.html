@@ -1,0 +1,55 @@
+<ur-loader *ngIf="cennikService.isLoading"></ur-loader>
+<div class="row" *ngIf="!cennikService.isLoading">
+  <div>
+    <h3>Dodaj produkt </h3>
+    <form #f="ngForm">
+      <div class="col-xs-12 col-md-6">
+        <div class="form-group">
+          <label for="produkt">Produkt : </label>
+          <select class="custom-select form-control mr-sm-2"
+                  id="produkt"
+                  name="produkt"
+                  ngModel
+                  required
+                  #produkt="ngModel"
+                  (ngModelChange)="onSelect($event);">
+            <ng-container *ngFor="let produkt of cennikService.cennik, let i = index">
+              <option [value]="i" *ngIf="+produkt[0] != 5 && +produkt[0] != 6">
+                {{produkt[1]}}
+              </option>
+            </ng-container>
+          </select>
+
+          <span class="help-block" *ngIf="!produkt.valid && produkt.touched" style="color:red; font-size: 10px">Stanowisko jest wymagane!</span>
+        </div>
+
+        <div class="form-group">
+          <label>Ilość: </label>
+          <input type="number"
+                 id="ilosc"
+                 class="form-control"
+                 name="ilosc"
+                 ngModel
+                 [ngModel]="ile"
+                 min="1"
+                 [max]="max"
+                 step="10"
+                 #ilosc="ngModel"
+                 required
+                 (focusout)="iloscPopraw(ilosc.value)"
+          >
+          <span class="help-block" *ngIf="!ilosc.valid && ilosc.touched || ilosc.value < 0 || ilosc.value > max"
+                style="color:red; font-size: 10px">Wprowadź poprawną godzine!</span>
+          <button class="btn btn-primary" type="button" [disabled]="!f.valid" (click)="dodaj(f)">
+            Dodaj
+          </button>
+          <button class="btn btn-primary" type="button" (click)="iloscMax()">
+            Max
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
