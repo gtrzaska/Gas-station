@@ -1,0 +1,47 @@
+<ur-loader *ngIf="dostawyService.isLoading"></ur-loader>
+<div class="row">
+  <div>
+    <h3>Zamówienie</h3>
+
+    <!-- <div class="left" *ngFor="let transakcja of historiaService.historia, let i = index" style="width:70vw">
+       <a style="cursor: pointer;" class="list-group-item clearfix" >
+         <h6 name="i" ngDefaultControl ngModel #i="ngModel" class="list-group-item-text">{{i + " | " + transakcja[5] + " | " + transakcja[2] + " | " + transakcja[3]+ " | " + transakcja[4]}}</h6>
+         <p class="list-group-item-text" >{{ transakcja[6] + " | " + transakcja[7] + " | " + transakcja[8]+ " | nip: " + transakcja[11]}}</p>
+       </a>
+
+       <div style="max-height: 80vh; overflow-y: auto">
+
+     </div>-->
+
+    <div style="max-height: 70vh; overflow-y: auto">
+      <table class="table table-hover table table-striped mb-0">
+        <thead>
+        <tr style="font-size: 16px">
+          <th>Lp.</th>
+          <th>Produkt</th>
+          <th>Ilość</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="font-size: 16px" *ngFor="let produkt of dostawyService.zamowienie, let i = index ">
+          <td>{{i + 1}}</td>
+          <td>{{produkt[1]}}</td>
+          <td>{{produkt[2]}}</td>
+          <td>
+            <button class="btn btn-danger" style="margin-top: 0" (click)="dostawyService.usun(i)">X</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="dostawyService.zamowienie.length > 0">
+  <button class="btn btn-danger" (click)="wyczysc()">
+    Wyczyść
+  </button>
+  <button class="btn btn-success" (click)="dostawyService.zamow()">
+    Zamów
+  </button>
+</ng-container>

@@ -20,7 +20,8 @@
           >
           <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="e95.value<=0"
                   (click)="cennikService.cenyZamien(cennikService.cennik[0][0], 'e95')" style="padding: 2px">
-            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+            <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+          </button>
         </div>
         <div class="form-group">
           <label for="e98">{{cennikService.cennik[1][1]}}: </label>
@@ -37,7 +38,8 @@
                  required>
           <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="e98.value<=0"
                   (click)="cennikService.cenyZamien(cennikService.cennik[1][0], 'e98')" style="padding: 2px">
-            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+            <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+          </button>
         </div>
         <div class="form-group">
           <label for="on">{{cennikService.cennik[2][1]}}: </label>
@@ -54,7 +56,8 @@
                  required>
           <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="on.value<=0"
                   (click)="cennikService.cenyZamien(cennikService.cennik[2][0], 'on')" style="padding: 2px">
-            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+            <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+          </button>
         </div>
         <div class="form-group">
           <label for="lpg">{{cennikService.cennik[3][1]}}: </label>
@@ -71,7 +74,8 @@
                  required>
           <button *ngIf="this.uprawnienia == '1'" class="btn btn-primary" type="button" [disabled]="lpg.value<=0"
                   (click)="cennikService.cenyZamien(cennikService.cennik[3][0], 'lpg')" style="padding: 2px">
-            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+            <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+          </button>
         </div>
         <h3>Cennik myjni</h3>
         <div class="form-group">
@@ -92,7 +96,8 @@
                   [disabled]="mycieStandardowe.value<=0"
                   (click)="cennikService.cenyZamien(cennikService.cennik[4][0], 'mycieStandardowe')"
                   style="padding: 2px">
-            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+            <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+          </button>
         </div>
         <div class="form-group">
           <label>{{cennikService.cennik[5][1]}}: </label>
@@ -112,7 +117,8 @@
                   [disabled]="mycieZWoskowaniem.value<=0"
                   (click)="cennikService.cenyZamien(cennikService.cennik[5][0],'mycieZWoskowaniem')"
                   style="padding: 2px">
-            <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+            <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+          </button>
         </div>
         <!--        <div *ngIf="this.uprawnienia === '1'">
                   <button class="btn btn-primary" type="button" [disabled]="!f.valid" (click)="cennikService.cenyZamien()">{{'Zamień ceny'}}</button>
@@ -157,7 +163,8 @@
               <button class="btn btn-primary" type="button" *ngIf="this.uprawnienia == '1'"
                       (click)="cennikService.cenyZamien(+produkt[0],'p-'+produkt[0] )"
                       style="padding: 2px; margin-right: 7px">
-                <img src="http://gtrzaska.cba.pl/images/edit.png" alt="edit" width="28" height="28"></button>
+                <img src="https://iv.pl/images/ed92b92d6c8e3261cf6120630a3733a1.png" alt="edit" width="28" height="28">
+              </button>
               <button class="btn btn-danger" type="button" *ngIf="this.uprawnienia === '1'"
                       (click)="usunProdukt(produkt[0])">X
               </button>
