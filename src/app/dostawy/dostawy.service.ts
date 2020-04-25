@@ -14,7 +14,18 @@ export class DostawyService {
   }
 
   dodajDoZamowienia(id: number, produkt: string, ilosc: number) {
-    this.zamowienie.push([id, produkt, ilosc]);
+    let duplikat = false;
+    for (let i = 0; i < this.zamowienie.length; i++) {
+      if (this.zamowienie[i][1] == produkt) {
+        this.zamowienie[i][2] += ilosc;
+        duplikat = true;
+      }
+
+    }
+    if (!duplikat) {
+      this.zamowienie.push([id, produkt, ilosc]);
+    }
+
     console.log(this.zamowienie);
   }
 
