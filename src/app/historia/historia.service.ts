@@ -9,7 +9,7 @@ import * as jsPDF from 'jspdf';
 export class HistoriaService implements OnInit {
   isLoading = false;
   private isAuth = false;
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   data = [];
   historia = [];
   public email = "";

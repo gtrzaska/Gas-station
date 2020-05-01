@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 export class ProfilService {
   user = [];
   data = [];
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   isLoading = false;
   peselPom: string;
   regonPom: string;

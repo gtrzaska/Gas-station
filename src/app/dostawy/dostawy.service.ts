@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class DostawyService {
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   isLoading = false;
   zamowienie = [];
 

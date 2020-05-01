@@ -10,7 +10,7 @@ import {KlienciService} from "../klienci/klienci.service";
 })
 export class CennikService {
 
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   isLoading = false;
   data = [];
   cennik = [];

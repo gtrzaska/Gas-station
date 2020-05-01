@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 })
 export class MonitoringService {
 
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   isLoading = false;
   data = [];
   stan = [];
