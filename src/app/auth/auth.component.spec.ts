@@ -1,31 +1,32 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {HistoriaComponent} from './historia.component';
+import {AuthComponent} from "./auth.component";
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientModule} from "@angular/common/http";
 
-describe('HistoriaComponent', () => {
-  let component: HistoriaComponent;
-  let fixture: ComponentFixture<HistoriaComponent>;
+
+describe('ProfilComponent', () => {
+  let component: AuthComponent;
+  let fixture: ComponentFixture<AuthComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HistoriaComponent],
+      declarations: [AuthComponent],
       imports: [
         RouterTestingModule,
         HttpClientModule
+
       ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HistoriaComponent);
+    fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async(() => {
     expect(component).toBeTruthy();
-  });
+  }));
 });

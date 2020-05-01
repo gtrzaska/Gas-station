@@ -12,7 +12,7 @@ import {KlienciService} from "../klienci/klienci.service";
 @Injectable({providedIn: 'root'})
 export class AuthService {
   // link = 'https://cors-anywhere.herokuapp.com/gtrzaska.cba.pl/';
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   user = new BehaviorSubject<User>(null);
   isLoading = false;
   logowanie = true;

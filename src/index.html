@@ -1,7 +1,8 @@
 <!doctype html>
+
 <html lang="en">
 <head>
-  <!--<base href="http://gtrzaska.cba.pl/ProjektZespolowy/">-->
+  <!--<base href="https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/ProjektZespolowy/">-->
   <meta charset="utf-8">
   <title>ProjektZespolowy</title>
   <base href="/">
@@ -9,6 +10,29 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD_hfA7PSCHGAAXkPKNJYxmNxhq_FeJGXk",
+    authDomain: "projektzespolowy-486ef.firebaseapp.com",
+    databaseURL: "https://projektzespolowy-486ef.firebaseio.com",
+    projectId: "projektzespolowy-486ef",
+    storageBucket: "projektzespolowy-486ef.appspot.com",
+    messagingSenderId: "233854344961",
+    appId: "1:233854344961:web:b4dad70365e0c30f764500",
+    measurementId: "G-NGM0EKH2KD"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<app-root></app-root>
 </body>
 </html>

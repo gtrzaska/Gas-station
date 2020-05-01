@@ -14,7 +14,7 @@ import {NgForm} from "@angular/forms";
 export class DaneKontaktoweComponent implements OnInit {
 
   isEdit = false;
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   isLoading = false;
   data = [];
   dane = [];

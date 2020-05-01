@@ -11,7 +11,7 @@ import {HttpClient} from "@angular/common/http";
 export class HeaderComponent implements OnInit {
   isAuth = false;
   data = [];
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   public email: string;
   public uprawnienia: number;
   alertMonitoring = false;
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(public authService: AuthService, private http: HttpClient) {
     setInterval(() => {
       this.stanFetch()
-    }, 1000);
+    }, 50000);
   }
 
   ngOnInit() {

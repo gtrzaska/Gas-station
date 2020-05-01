@@ -12,7 +12,7 @@ export class RezerwacjaService implements OnInit {
   public uprawnienia: number;
   public imie = "";
   public nazwisko = "";
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
   data = [];
   rezerwacjeA = [];
 

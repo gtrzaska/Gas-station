@@ -1,6 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DaneKontaktoweComponent} from './dane-kontaktowe.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('DaneKontaktoweComponent', () => {
   let component: DaneKontaktoweComponent;
@@ -8,7 +10,11 @@ describe('DaneKontaktoweComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DaneKontaktoweComponent]
+      declarations: [DaneKontaktoweComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ]
     })
       .compileComponents();
   }));

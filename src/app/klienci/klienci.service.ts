@@ -9,7 +9,7 @@ export class KlienciService implements OnInit {
   data = [];
   users = [];
   isLoading = false;
-  link = 'http://gtrzaska.cba.pl/';
+  link = 'https://cors-anywhere.herokuapp.com/http://gtrzaska.cba.pl/';
 
   constructor(private http: HttpClient, private router: Router) {
     //this.users = [];
